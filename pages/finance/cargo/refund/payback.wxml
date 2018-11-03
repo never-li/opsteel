@@ -1,0 +1,27 @@
+<view class="payback-wrap">
+    <view class="payback-item op-flex-box" bindtap='choose' >
+        <view class="item-txt center">
+            <txt class="txt1">余额支付</txt>
+            <view class="txt2">可用余额：10,000元</view>
+        </view>
+        <view class="item-icon" >
+            <image src="{{iconDomain}}{{ selected? 'round-select':'round-default'}}.png" lazy-load/>
+        </view>
+    </view>
+    <view bindtap='nextStep' class="btn-bottom {{ selected? '':'disable'}} ">确定还款</view>
+    <paySix 
+        bindvalueSix="valueSix"
+        inputShow="{{inputShow}}"
+        input_value="{{inputData.input_value}}" 
+        value_length="{{inputData.value_length}}" 
+        isNext="{{inputData.isNext}}" 
+        get_focus="{{inputData.get_focus}}" 
+        focus_class="{{inputData.focus_class}}" 
+        value_num="{{inputData.value_num}}"
+        height="{{inputData.height}}" 
+        width="{{inputData.width}}" 
+        see="{{inputData.see}}" 
+        interval="{{inputData.interval}}">
+    </paySix>
+    
+</view>

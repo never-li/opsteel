@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "欧浦智网",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

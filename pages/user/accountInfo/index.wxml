@@ -1,0 +1,33 @@
+<view class="account-wrap">
+    <view class="mt20 bg-white" wx:for="{{ dataList }}" wx:key="item">
+        <view class="pl20pr20 p-rl f30 fb lh88">
+            {{ index == 0? '欧浦乐从账户' : index == 1? '欧浦上海账户' : '欧浦支付账户' }}
+            <hr/>
+        </view>
+        <view class="p-rl p20">
+            <view class="op-flex-box lh52">
+                <view class="color-999">我的余额（元）</view>
+                <view class="color-red fb">{{ item.totalAmount }}</view>
+            </view>
+            <view class="op-flex-box lh52">
+                <view>
+                    <text class="color-999 pr10">自由款</text>
+                    <text>{{ item.activeAmount }}</text>
+                </view>
+                <view>
+                    <text class="color-999 pr10">已冻结</text>
+                    <text>{{ item.freezeAmount }}</text>
+                </view>
+            </view>
+            <hr/>
+        </view>
+        <!-- 我的银票还没上线 暂时写死 -->
+        <view class="pl20pr20 lh88">
+            <view class="op-flex-box">
+                <view class="color-999">我的银票（元）</view>
+                <view class="color-red fb">0.00</view>
+            </view>
+        </view>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

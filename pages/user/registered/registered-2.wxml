@@ -1,0 +1,16 @@
+<view class="registered-wrap bg-white">
+    <view class="registered-title">验证手机</view>
+    <view class="registered-secondary-title">短信验证码已发送至 ＋86{{phone}} 请注意查收</view>
+    <view class="op-flex-box registered-input-code">
+        <input type='number' class="code" maxlength="4" bindinput="watchcode" bindconfirm="nextStep2" focus />
+    </view>
+    <view class="btn-blue  {{codeDefault== false?'btn-disable':''}}" bindtap="nextStep2">下一步</view>
+    <view class="verification-code" wx:if="{{state_show}}"> 
+        <view class="code-bnt-msg {{is_show?'show':'hide'}}" bindtap="clickVerify">重新发送验证码</view>
+        <view class="code-txt-msg {{is_show?'hide':'show'}}">重发验证码{{last_time}}秒</view>
+    </view>
+    <view class="verification-code" wx:else>
+        <view class="code-txt-msg">操作太急,请稍后....</view>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

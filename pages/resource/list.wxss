@@ -1,0 +1,46 @@
+@import '/static/css/common.wxss';
+.resource-wrap .wrap-header {
+  width: 100%;
+  height: 112rpx;
+  background: #008CFF;
+}
+.resource-wrap .wrap-header .search {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 35rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+  height: 72rpx;
+}
+.resource-wrap .wrap-header .search .search-input {
+  width: 520rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding-left: 40rpx;
+  font-size: 26rpx;
+}
+.resource-wrap .wrap-header .search .search-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72rpx;
+  height: 72rpx;
+  z-index: 9;
+}
+.resource-wrap .wrap-header .search .search-clear image {
+  padding: 20rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.resource-wrap .wrap-header .back {
+  font-size: 26rpx !important;
+  padding: 20rpx;
+  color: #FFFFFF;
+}
+.resource-wrap .content .p-rl {
+  line-height: 88rpx;
+  width: 100%;
+  height: 88rpx;
+}
+.resource-wrap .content .p-rl view {
+  padding-left: 20rpx;
+}

@@ -1,0 +1,77 @@
+<view class="inquiry-wrap">
+    <view class="op-flex-box wrap-tab bg-white">
+        <span class="tab center {{ showTab == 1? 'current' : '' }}" data-tab="1" bindtap='changeTab'>贷款</span>
+        <span class="tab center {{ showTab == 2? 'current' : '' }}" data-tab="2" bindtap='changeTab'>还款</span>
+        <span class="tab center {{ showTab == 3? 'current' : '' }}" data-tab="3" bindtap='changeTab'>货物</span>
+    </view>
+    <scroll-view scroll-y style="height: {{scrollH}};" class="bg-white">
+        <view class="wrap-box loan" wx:if='{{showTab == 1}}'>
+            <block wx:for="{{[1,2,2,4]}}" wx:key="item">
+                <view class="item" bindtap="details" data-loanid="{{item}}">
+                    <view class="op-flex-box">
+                        <view class="center"><text class="name">贷款</text><text class="num">150,000.12</text></view>
+                        <view class="time">2018-04-12</view>
+                    </view>
+                    <view class="op-flex-box">
+                        <view class="center"><text class="name">利息</text><text class="num">500.66</text></view>
+                        <view class="status">未还款<view class="op-right-arrow"></view></view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="wrap-box repayment" wx:if='{{showTab == 2}}'>
+            <block wx:for="{{[1,2,2,4]}}" wx:key="item">
+                <view class="wrap-item" >
+                    <view class="item-t op-flex-box">
+                        <view class="center">还款<text>2000.00</text></view>
+                        <view class="item-time">2018-04-12</view>
+                        </view>
+                    <view class="item-c op-flex-box">
+                        <view  class="center">本金<text>145,000</text></view>
+                        <view  class="center">利息<text>145,000</text></view>
+                        <view >监管费<text>145,000</text></view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="wrap-box goods" wx:if="{{showTab == 3}}">
+            <block wx:for="{{[1,2,2,4]}}" wx:key="item">
+                <view class="wrap-item">
+                    <view class="title op-flex-box">
+                        <text class="name">捆包号</text>
+                        <text class="num">KB001-0001</text>
+                        <image class="icon" src="{{iconDomain}}icon-jieya.png"/>
+                        <text class="time center">2018-04-12</text>
+                    </view>
+                    <view class="content border-bottom">
+                        <view class="item">
+                            <text class="name">品种</text>
+                            <text class="value">冷轧不锈钢卷</text>
+                        </view>
+                        <view class="item">
+                            <text class="name">牌号</text>
+                            <text class="value">SPCC</text>
+                        </view>
+                        <view class="item">
+                            <text class="name">产地</text>
+                            <text class="value">柳钢</text>
+                        </view>
+                        <view class="item">
+                            <text class="name">规格</text>
+                            <text class="value">1.0*1250*C</text>
+                        </view>
+                        <view class="item">
+                            <text class="name">存放地</text>
+                            <text class="value">宝钢8号库</text>
+                        </view>
+                        <view class="item"> 
+                            <text class="name">重量</text>
+                            <text class="value">1.395吨</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <loadmore noMore="{{ noMore }}"></loadmore>
+    </scroll-view>
+</view>

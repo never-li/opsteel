@@ -1,0 +1,84 @@
+<view class="certificate-wrap f30">
+    <view class="title op-flex-box bg-white">
+        <text>三证合一</text>
+        <switch color="#008CFF" bindchange="switchChange"/>
+    </view>
+    <view class="mt20">
+        <!-- 三证合一 -->
+        <view wx:if="{{ isThree }}">
+            <view class="op-flex-box lh90 bg-white p-rl">
+                <text>营业执照（必须，三证合一）</text>
+                <text class="color-blue center tr" wx:if="{{ isUploadThree }}" data-url="{{ previewUrls.three }}" bindtap="previewImage">查看</text>
+                <view class="pl30" wx:if="{{ !isUploadThree }}" data-type="three" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-default.png" lazy-load />
+                </view>
+                <view class="pl30" wx:else data-type="three" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-select.png" lazy-load />
+                </view>
+                <hr />
+            </view>
+        </view>
+        <!-- 非三证合一 -->
+        <view wx:else>
+            <view class="op-flex-box lh90 bg-white p-rl">
+                <text>营业执照（必须）</text>
+                <text class="color-blue center tr" wx:if="{{ isUploadLicense }}" data-url="{{ previewUrls.businessLicense }}" bindtap="previewImage">查看</text>
+                <view class="pl30" wx:if="{{ !isUploadLicense }}" data-type="businessLicense" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-default.png" lazy-load />
+                </view>
+                <view class="pl30" wx:else data-type="businessLicense" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-select.png" lazy-load />
+                </view>
+                <hr />
+            </view>
+            <view class="op-flex-box lh90 bg-white p-rl">
+                <text>组织机构代码证（必须）</text>
+                <text class="color-blue center tr" wx:if="{{ isUploadOrganization }}" data-url="{{ previewUrls.organizationCode }}" bindtap="previewImage">查看</text>
+                <view class="pl30" wx:if="{{ !isUploadOrganization }}" data-type="organizationCode" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-default.png" lazy-load />
+                </view>
+                <view class="pl30" wx:else data-type="organizationCode" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-select.png" lazy-load />
+                </view>
+                <hr />
+            </view>
+            <view class="op-flex-box lh90 bg-white p-rl">
+                <text>税务登记证（必须）</text>
+                <text class="color-blue center tr" wx:if="{{ isUploadTax }}" data-url="{{ previewUrls.taxCertificate }}" bindtap="previewImage">查看</text>
+                <view class="pl30" wx:if="{{ !isUploadTax }}" data-type="taxCertificate" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-default.png" lazy-load />
+                </view>
+                <view class="pl30" wx:else data-type="taxCertificate" bindtap="chooseImage">
+                    <image src="{{ iconDomain }}cam-select.png" lazy-load />
+                </view>
+                <hr />
+            </view>
+        </view>
+
+        <view class="op-flex-box lh90 bg-white p-rl">
+            <text>开票资料（必须，盖公章）</text>
+            <text class="color-blue center tr" wx:if="{{ isUploadBill }}" data-url="{{ previewUrls.billInfo }}" bindtap="previewImage">查看</text>
+            <view class="pl30" wx:if="{{ !isUploadBill }}" data-type="billInfo" bindtap="chooseImage">
+                <image src="{{ iconDomain }}cam-default.png" lazy-load />
+            </view>
+            <view class="pl30" wx:else data-type="billInfo" bindtap="chooseImage">
+                <image src="{{ iconDomain }}cam-select.png" lazy-load />
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90 bg-white p-rl">
+            <text>法人代表身份证（正面）</text>
+            <text class="color-blue center tr" wx:if="{{ isUploadIdcard }}" data-url="{{ previewUrls.legalPerson }}" bindtap="previewImage">查看</text>
+            <view class="pl30" wx:if="{{ !isUploadIdcard }}" data-type="legalPerson" bindtap="chooseImage">
+                <image src="{{ iconDomain }}cam-default.png" lazy-load />
+            </view>
+            <view class="pl30" wx:else data-type="legalPerson" bindtap="chooseImage">
+                <image src="{{ iconDomain }}cam-select.png" lazy-load />
+            </view>
+        </view>
+    </view>
+    
+    <view class="btn-bottom {{ (!isUploadThree || !isUploadBill)? 'disable' : ''}}" bindtap="submit" wx:if="{{ isThree }}">提交</view>
+    <view class="btn-bottom {{ (!isUploadLicense || !isUploadOrganization || !isUploadTax || !isUploadBill)? 'disable' : ''}}" bindtap="submit" wx:else>提交</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

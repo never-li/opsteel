@@ -1,0 +1,5 @@
+@import '/static/css/common.wxss';
+.account-wrap {
+  position: fixed;
+  width: 100%;
+}

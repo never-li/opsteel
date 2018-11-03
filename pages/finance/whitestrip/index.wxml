@@ -1,0 +1,44 @@
+<view class="whitestrip-wrap">
+   <view class="op-flex-box wrap-tab">
+        <span class="tab center {{ showTab == 1? 'current' : '' }}" data-tab="1" bindtap='changeTab'>交易记录</span>
+        <span class="tab center {{ showTab == 2? 'current' : '' }}" data-tab="2" bindtap='changeTab'>还款记录</span>
+    </view>
+    <view class="op-flex-box wrap-filter">
+        <text>默认显示最近一个月的交易记录</text>
+        <text bindtap="showSideBar">筛选</text>
+    </view>
+    <scroll-view scroll-y style="height: {{scrollH}};">
+        <!-- 交易记录 -->
+        <view class="wrap-item" wx:if='{{showTab == 1}}'>
+            <view class="item"  wx:for="{{orderlist}}" wx:key='item'>
+                <view class="op-flex-box order-number">
+                    <text>单号：{{item.singleNumber}}</text>
+                    <text class="status">{{item.status}}</text>
+                </view>
+                <view class="order-detail">
+                    <view>金额：{{item.amount}}</view>
+                    <view>手续费：{{item.handlingFee}}</view>
+                    <view>未还本金：{{item.unpaidPrincipal}}</view>
+                    <view>未还手续费：{{item.noProcessingFee}}</view>
+                    <view>最近还款日期：{{item.recentDate}}</view>
+                    <view>到期日期：{{item.dateOfExpiry}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 还款记录 -->
+        <view class="wrap-item" wx:if='{{showTab == 2}}'>
+            <view class="item"  wx:for="{{repaymentlist}}" wx:key='item'>
+                <view class="order-number">
+                    <text>流水号：{{item.serialNumber}}</text>
+                </view>
+                <view class="order-detail">
+                    <view>还款金额：<b>{{item.repaymentAmount}}</b></view>
+                    <view>到期日期：{{item.dateOfExpiry}}</view>
+                </view>
+            </view>
+        </view>
+        <loadmore noMore="{{ noMore }}"></loadmore>
+    </scroll-view>
+    <side-bar showSideBar="{{ showSideBar }}" inputTitle="{{ inputTitle }}" showInput="{{ showInput }}" showDate="{{ showDate }}" dateTitle="{{ dateTitle }}" showWarehouse="{{ showWarehouse }}" showSmallType="{{ showSmallType }}" showType="{{ showType }}" showSpec="{{ showSpec }}" showShopSign="{{ showShopSign }}" showOrigin="{{ showOrigin }}" showOriginWeight="{{ showOriginWeight }}" showStorage="{{ showStorage }}" showService="{{ showService }}" showSpecInput="{{ showSpecInput }}" showOthers="{{ showOthers }}" showProviderName="{{ showProviderName }}" showDeliveryMonth="{{ showDeliveryMonth }}" showDeliveryPlace="{{ showDeliveryPlace }}" showOrderNo="{{ showOrderNo }}" showProvider="{{ showProvider }}" showCustomer="{{ showCustomer }}" showPayType="{{ showPayType }}" showFunder="{{ showFunder }}" showStatus="{{ showStatus }}" showOrderStatus="{{ showOrderStatus }}" showOrderType="{{ showOrderType }}" showPeriod="{{ showPeriod }}" showFundFlow="{{ showFundFlow }}" showFundUse="{{ showFundUse }}" bindconfirm="confirmSideBar"></side-bar>
+    <view class="repayment-bnt" wx:if='{{showTab == 1}}' bindtap='repayment_bnt'>我要还款</view>
+</view>

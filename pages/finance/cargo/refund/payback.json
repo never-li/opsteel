@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我要还款",
+    "usingComponents": {
+        "paySix": "../../../../components/passwordBox/passwordBox"
+    }
+}

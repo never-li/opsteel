@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我要换货",
+    "usingComponents": {
+        "select": "../../../../components/select/select"
+    }
+}

@@ -1,0 +1,111 @@
+@import '/static/css/common.wxss';
+.purchase-list-wrap .results .item {
+  text-align: center;
+  position: relative;
+}
+.purchase-list-wrap .results .item .item-t {
+  margin-top: 26rpx;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  margin-bottom: 7rpx;
+  color: #333333;
+}
+.purchase-list-wrap .results .item .item-c {
+  font-size: 20rpx;
+  line-height: 50rpx;
+  color: #999999;
+  margin-bottom: 13rpx;
+}
+.purchase-list-wrap .results .item .item-c b {
+  font-size: 26rpx;
+}
+.purchase-list-wrap .results .item:after {
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 80rpx;
+  top: 50%;
+  left: 0;
+  margin-top: -40rpx;
+  border-left: 2rpx solid #E8E8E8;
+}
+.purchase-list-wrap .results .item:first-child .item-t {
+  color: #008CFF;
+}
+.purchase-list-wrap .results .item:first-child .item-c {
+  color: #008CFF;
+}
+.purchase-list-wrap .results .item:first-child:after {
+  border-left: none;
+}
+.purchase-list-wrap .statistics {
+  background: #FAFAFA;
+  line-height: 68rpx;
+  font-size: 24rpx;
+  color: #666666;
+  padding: 0 24rpx;
+}
+.purchase-list-wrap .statistics b {
+  color: #F95355;
+  font-weight: bold;
+}
+.purchase-list-wrap .application-wrap .wrap-item {
+  position: relative;
+  background: #FFFFFF;
+  padding: 20rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item > view {
+  height: 52rpx;
+  line-height: 52rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item .orders-icon {
+  width: 80rpx;
+  height: 32rpx;
+  margin-top: -6rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item .orders-finish {
+  position: absolute;
+  top: 0;
+  right: 25rpx;
+  width: 143rpx;
+  height: 114rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item .orders-finish image {
+  width: 143rpx;
+  height: 114rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item b {
+  color: #F95355;
+  font-weight: bold;
+}
+.purchase-list-wrap .application-wrap .wrap-item .virtue {
+  display: inline-block;
+  width: 140rpx;
+  font-size: 26rpx;
+  color: #999999;
+  margin-right: 66rpx;
+}
+.purchase-list-wrap .application-wrap .wrap-item:after {
+  display: inline-block;
+  content: " ";
+  height: 14rpx;
+  width: 14rpx;
+  border-width: 2rpx 2rpx 0 0;
+  border-color: #999999;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  margin-top: -6rpx;
+}
+.purchase-list-wrap .application-wrap .line {
+  width: 100%;
+  height: 10rpx;
+  background: #FAFAFA;
+}
+.purchase-list-wrap .application-wrap .line:last-child {
+  height: 0rpx;
+}

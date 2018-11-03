@@ -1,0 +1,304 @@
+<view class="operate-wrap bg-white">
+    <view class="op-flex-box wrap-tab">
+        <span class="tab center {{ showTab == 1? 'current' : '' }}" data-tab="1" bindtap='changeTab'>交易分析</span>
+        <span class="tab center {{ showTab == 2? 'current' : '' }}" data-tab="2" bindtap='changeTab'>用户分析</span>
+    </view>
+    <!-- <scroll-view  scroll-y style="height: {{scrollH}};"> -->
+        <!-- 交易分析 -->
+        <view class="wrap-transaction" wx:if="{{showTab == 1}}">
+            <view class="deal">
+                <span class="today">今日成交</span>
+                <view class="op-flex-box data">
+                    <view class="center txt line"><p class="p1"><span>3025.980</span>吨</p><p class="p2">总重量</p></view>
+                    <view class="center txt"><p class="p1"><span>1,34,320.12</span>元</p><p class="p2">成交额</p></view>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 交易量 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">交易量(吨)</span>
+                    <span class="chart-options">
+                        <picker bindchange="amountDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="K-container">
+                    <ec-canvas id="amount-chart" canvas-id="amount-chart" ec="{{ ecK }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 挂货量与销售概况 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">挂货量与销售概况</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="bar-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="hanging-goods" canvas-id="hanging-goods" ec="{{ ecBar }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 销售区域分布 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">销售区域分布</span>
+                    <span class="chart-time">{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="map-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="sale-ecMap" canvas-id="sale-ecMap" ec="{{ ecMap }}"></ec-canvas>
+                </view>
+                <view class="Leaderboard">
+                    <view class="subtitle">{{subtitle}}</view>
+                    <view class="table">
+                        <ul>
+                            <li class="table-title"><span class="rank">排名</span><span class="area">地区</span><span class="amount">{{amountName}}</span></li>
+                            <block wx:for="{{areaDataTable}}"  wx:key="item" wx:if="{{index<5}}">
+                                <li><span class="rank">{{index+1}}</span><span  class="area">{{item.name}}</span><span class="amount">{{item.value}}</span></li>
+                            </block>
+                        </ul>
+                    </view>
+                </view>
+
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 成交品种比例(线上购) -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <view class="center">
+                        <span class="chart-title">成交品种比例(线上购)</span>
+                    </view>
+                    <view class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="bar-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="deal-Variety" canvas-id="deal-Variety" ec="{{ ecBar }}"></ec-canvas>
+                </view>
+                <view class="table">
+                    <view class="op-flex-box table-heed">
+                        <view>成交总量</view>
+                        <view style="color:#619DFF">4353.092</view>
+                        <view>品种比例</view>
+                    </view>
+                    <view class="op-flex-box table-body">
+                        <view class="tc">普冷</view>
+                        <view>1218.513</view>
+                        <view>28.0%</view>
+                    </view>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 销售方式占比 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">销售方式占比</span>
+                    <span class="chart-time">{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="pic-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="sales-mode" canvas-id="sales-mode" ec="{{ ecPie }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 业务模式占比 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">业务模式占比</span>
+                    <span class="chart-time">{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="pic-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="business-mode" canvas-id="business-mode" ec="{{ ecPie }}"></ec-canvas>
+                </view>
+            </view>
+        </view>
+        <!-- 用户分析 -->
+        <view class="wrap-user" wx:if="{{showTab == 2}}">
+            <view class="op-flex-box user-data">
+                <view class="center data-item">
+                    <view class="num">3234</view>
+                    <view class="txt">累计用户数</view>
+                </view>
+                <view class="center data-item">
+                    <view class="num"><span>+</span>50</view>
+                    <view class="txt">新增用户数</view>
+                </view>
+                <view class="center data-item">
+                    <view class="num"><span>-</span>10</view>
+                    <view class="txt">流失用户数</view>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 用户区域分布 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">用户区域分布</span>
+                    <span>{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="map-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="sale-ecMap" canvas-id="sale-ecMap" ec="{{ ecMap }}"></ec-canvas>
+                </view>
+                <view class="Leaderboard">
+                    <view class="subtitle">{{subtitle}}</view>
+                    <view class="table">
+                        <ul>
+                            <li class="table-title"><span class="rank">排名</span><span class="area">地区</span><span class="amount">{{amountName}}</span></li>
+                            <block wx:for="{{areaDataTable}}"  wx:key="item" wx:if="{{index<5}}">
+                                <li><span class="rank">{{index+1}}</span><span  class="area">{{item.name}}</span><span class="amount">{{item.value}}</span></li>
+                            </block>
+                        </ul>
+                    </view>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 用户数 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">用户数</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="line-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="user-number" canvas-id="user-number" ec="{{ ecline }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 新用户与流失用户 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">新用户与流失用户</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="bar-container">
+                    <ec-canvas wx:if="{{!isDisposed}}"  id="hanging-goods" canvas-id="hanging-goods" ec="{{ ecBar }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 订单流程转化 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">订单流程转化</span>
+                    <span class="chart-time">{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="chart-img">
+                    <image src="{{iconDomain}}icon-funnel.png" />
+                    <text class="text1_1">3.879</text>
+                    <text class="text1_2">浏览商品</text>
+                    <text class="text1_3">72.13%</text>
+                    <text class="text2_1">2.798</text>
+                    <text class="text2_2">加入购物车</text>
+                    <text class="text2_3">79.82%</text>
+                    <text class="text3_1">2.737</text>
+                    <text class="text3_2">提交订单</text>
+                    <text class="text3_3">79.39%</text>
+                    <text class="text4_1">2.173</text>
+                    <text class="text4_2">支付订单</text>
+
+                </view>
+                <view class="chart-img-item op-flex-box">
+                    <view class="center"><span class="icon-1"></span>浏览商品</view>
+                    <view class="center"><span class="icon-2"></span>加入购物车</view>
+                    <view class="center"><span class="icon-3"></span>提交订单</view>
+                    <view class="center"><span class="icon-4"></span>支付订单</view>
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+            <!-- 用户交易量统计 -->
+            <view class="wrap-chart">
+                <view class="op-flex-box">
+                    <span class="chart-title">用户交易量统计</span>
+                    <span class="chart-time">{{ecStartingTime}}-{{ecEndTime}}</span>
+                    <span class="chart-options">
+                        <picker bindchange="salesDate" range="{{ecDate}}">
+                            <view class="picker">
+                            最近七天<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+                            </view>
+                        </picker>
+                    </span>
+                </view>
+                <view class="table">
+                    <view class="op-flex-box table-heed">
+                        <view>公司名称</view>
+                        <view>交易额(元)</view>
+                        <view>交易量(吨)</view>
+                    </view>
+                    <block wx:for="{{[1,2,3,4,5]}}"  wx:key="item">
+                        <view class="op-flex-box table-body">
+                            <view>
+                                <span wx:if="{{index<3}}">
+                                    <image wx:if="{{index==0}}" src="{{iconDomain}}rank-1.png"></image>
+                                    <image wx:if="{{index==1}}"  src="{{iconDomain}}rank-2.png"></image>
+                                    <image wx:if="{{index==2}}"  src="{{iconDomain}}rank-3.png"></image>
+                                </span>
+                                <span class="name">公司A</span>
+                            </view>
+                            <view>5,481,764.19</view>
+                            <view>1218.513</view>
+                        </view>
+                    </block>
+                    
+                </view>
+            </view>
+            <view class="wrap-line"></view>
+        </view>
+    <!-- </scroll-view> -->
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

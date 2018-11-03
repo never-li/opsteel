@@ -1,0 +1,87 @@
+@import '/static/css/common.wxss';
+.settle-wrap {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.settle-wrap .lock-wrap {
+  position: relative;
+  height: calc(100% - 90rpx);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.settle-wrap .tip {
+  padding: 20rpx;
+  font-size: 26rpx !important;
+  color: #ff9933;
+  background: #fffef2;
+}
+.settle-wrap .header {
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  font-size: 26rpx !important;
+  height: 80rpx;
+  background: rgba(249, 83, 85, 0.05);
+  color: #F95355;
+}
+.settle-wrap .header image {
+  width: 44rpx;
+  height: 44rpx;
+}
+.settle-wrap .content {
+  background: #FFFFFF !important;
+  padding: 20rpx;
+}
+.settle-wrap .content image {
+  width: 38rpx;
+  height: 38rpx;
+}
+.settle-wrap .content.account .op-flex-box > view:first-child {
+  color: #666666 !important;
+  width: 150rpx;
+}
+.settle-wrap .content-baitiao {
+  background: #FFFFFF !important;
+}
+.settle-wrap .content-baitiao image {
+  width: 38rpx;
+  height: 38rpx;
+}
+.settle-wrap .content-baitiao .icon-rule {
+  width: 32rpx;
+  height: 32rpx;
+}
+.settle-wrap .content-baitiao .box-info > view input {
+  font-size: 32rpx !important;
+  line-height: 52rpx;
+  height: 52rpx;
+}
+.settle-wrap .content-baitiao .box-info > view > .op-flex-box {
+  position: relative;
+  padding: 30rpx 20rpx;
+}
+.settle-wrap .content-baitiao .box-info > view > .op-flex-box .left-box {
+  position: relative;
+  text-align: center;
+  width: 180rpx;
+}
+.settle-wrap .content-baitiao .box-info > view > .op-flex-box .left-box .hr-right {
+  width: 3rpx;
+  height: 100rpx;
+  left: auto;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.settle-wrap .content-baitiao .box-info > view > .op-flex-box .center {
+  padding-left: 40rpx;
+}
+.settle-wrap .content-baitiao .box-info > view > .op-flex-box .center .remark text {
+  font-size: 22rpx !important;
+  color: #F95355 !important;
+  margin-right: 10rpx;
+  display: inline-block;
+  padding: 0 10rpx 2rpx;
+  border: 2rpx solid #F95355;
+  border-radius: 2rpx;
+}

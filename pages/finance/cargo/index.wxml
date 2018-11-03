@@ -1,0 +1,37 @@
+<view class="cargo-wrap">
+    <view class="op-flex-box item" bindtap='PopUpBox'>
+        <image src="{{iconDomain}}huoya-loan.png" />
+        <view class="op-flex-box center border-bottom">
+             <text class="center">我要贷款</text>
+            <view class="op-right-arrow"></view>
+        </view>
+    </view>
+    <view class="op-flex-box item" bindtap='refund'>
+        <image src="{{iconDomain}}huoya-refund.png" />
+        <view class="op-flex-box center border-bottom">
+             <text class="center">我要还款</text>
+            <view class="op-right-arrow"></view>
+        </view>
+    </view>
+    <view class="op-flex-box item" bindtap='exchange'>
+        <image src="{{iconDomain}}huoya-change.png" />
+        <view class="op-flex-box center border-bottom">
+             <text class="center">我要换货</text>
+            <view class="op-right-arrow"></view>
+        </view>
+    </view>
+    <view class="op-flex-box item" bindtap='supply'>
+        <image src="{{iconDomain}}huoya-replenish.png" />
+        <view class="op-flex-box center border-bottom">
+             <text class="center">我要补货</text>
+            <view class="op-right-arrow"></view>
+        </view>
+    </view>
+    <view class="op-flex-box item" bindtap='inquiry'>
+        <image src="{{iconDomain}}huoya-record.png" />
+        <view class="op-flex-box center border-bottom">
+             <text class="center">记录查询</text>
+            <view class="op-right-arrow"></view>
+        </view>
+    </view>
+</view>

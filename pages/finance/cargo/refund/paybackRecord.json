@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "还款记录",
+    "usingComponents": {
+        "loadmore": "../../../../components/loadmore/loadmore"
+    }
+}

@@ -1,0 +1,23 @@
+@import '/static/css/common.wxss';
+.approval-wrap {
+  margin: 29rpx 24rpx;
+}
+.approval-wrap .icon-image {
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 24rpx;
+}
+.approval-wrap .title {
+  font-size: 30rpx;
+  color: #333333;
+}
+.approval-wrap .number {
+  line-height: 16px;
+  padding: 3rpx 10rpx;
+  font-size: 26rpx;
+  background: #F95355;
+  text-align: center;
+  border-radius: 45rpx;
+  color: #FFFFFF;
+  margin-right: 20rpx;
+}

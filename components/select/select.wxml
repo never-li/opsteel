@@ -1,0 +1,30 @@
+<!-- 选择 -->
+<view class="select-compoents">
+    <!-- 列表 -->
+    <view class="detail">
+        <view class="item {{arrowUp? ' ' : 'noborder'}}" wx:for="{{selectData}}"  wx:key="item" bindtap="checkItem"  data-id="{{item.id}}">
+            <view class="bale-title op-flex-box ">
+                    <image class="checkbox" src="{{ iconDomain }}{{ item.checked? 'round-select':'round-default'}}.png"></image>
+                    <view class="bale-num center border-bottom">捆包号<b>KB001-0001</b></view>
+            </view>
+            <view class="bale-detail" wx:if ="{{arrowUp}}">
+                    <view class="norm"><text>品种</text><view class="content">SPC</view></view>
+                    <view class="norm"><text>牌号</text><view class="content">冷轧不锈钢卷</view></view>
+                    <view class="norm"><text>产地</text><view class="content">柳钢</view></view>
+                    <view class="norm"><text>规格</text><view class="content">1.0*1250*C</view></view>
+                    <view class="norm"><text>存放地</text><view class="content">宝钢8号库</view></view>
+                    <view class="norm"><text>重量</text><view class="content">1.395吨</view></view>
+                    <view class="norm"><text>评估货值</text><view class="sum"><b>¥</b>5000.00</view></view>
+            </view>
+        </view>
+    </view>
+    <!-- 全选 -->
+    <view class="select-all op-flex-box border-top">
+        <view class="check-all center op-flex-box" bindtap="checkAll" >
+            <image class="checkbox" src="{{ iconDomain }}{{ checkedAll? 'round-select':'round-default'}}.png"></image>
+            <text class="txt">全选</text>
+            <view class="chosen center">已选择：<b>{{checkItemData.length}}</b>条，<b>{{checkWeight}}</b>吨</view>
+        </view>
+        <view class="collapse" catchtap='checkCollapse'>{{arrowUp? '收起':'展开'}}<view class="op-down-arrow {{arrowUp? ' active' : ''}}"></view></view>
+    </view>
+</view>

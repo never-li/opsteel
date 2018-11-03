@@ -1,0 +1,241 @@
+<view class="purchase-wrap bg-white">
+    <block wx:if="{{type==4}}">
+        <view class="op-flex-box lh80 border-bottom purchase-time" >
+            <view class="date center">{{lastTime}} - {{startTime}}</view>
+            <view>
+                <picker bindchange="pickTime" value="{{pickTimeDate.index}}" range-key='value' range="{{pickTimeDate.data}}">
+                    <view class="picker">
+                    {{pickTimeDate.data[pickTimeDate.index].value}}<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="analysis-wrap">
+            <view class="item border-bottom ">
+                <view class="wrap-titile">合同</view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue color-666"><image src="{{iconDomain}}icon-weight.png" />总重量(吨)</view>
+                    <view class="virtue">{{totalData.totalWeight || 0}}</view>
+                    <view class="titile-virtue color-666"><image src="{{iconDomain}}icon-amount.png" />总金额(元)</view>
+                    <view class="virtue">{{totalData.totalAmount || 0}}</view>
+                </view>
+                
+            </view>
+            <view class="item border-bottom">
+                <view class="wrap-titile">货款</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasPayment"></canvas>
+                    <text style="color: #FF9B49;">{{paymentRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已付款(元)</view>
+                    <view class="virtue">{{totalData.payedAmount || 0}}</view>
+                    <view class="titile-virtue">未付款(元)</view>
+                    <view class="virtue">{{totalData.unpayedAmount || 0}}</view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="wrap-titile">货物</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasGoods"></canvas>
+                    <text style="color: #73D1E8;">{{goodsRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已收货(吨)</view>
+                    <view class="virtue">{{totalData.receiedWeight || 0}}</view>
+                    <view class="titile-virtue">未收货(吨)</view>
+                    <view class="virtue">{{totalData.underdeliveryWeight || 0}}</view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="wrap-titile">发票</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasInvoice"></canvas>
+                    <text style="color:#FBA25A;">{{invoiceRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已收票(元)</view>
+                    <view class="virtue">{{totalData.receivedInvoicedAmt || 0}}</view>
+                    <view class="titile-virtue">未收票(元)</view>
+                    <view class="virtue">{{totalData.unreceiveInvoicedAmt || 0}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="approval-wrap">
+            <!-- <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-warn.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">到期未生效</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">合同多付款</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">合同欠交/到货未赎</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='PopUpBox'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">开票异常</text>
+                    <span class="number">6单</span>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view> -->
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-more.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">更多订单</text>
+                    <span class="number">{{listDataShort.pageBean.totalCount || 0}}单</span>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='PopUpBox'>
+                <image class="icon-image" src="{{ iconDomain }}icon-more.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">更多开票</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{type==5}}">
+        <view class="op-flex-box lh80 border-bottom purchase-time" >
+            <view class="date center">{{lastTime}} - {{startTime}}</view>
+            <view>
+                <picker bindchange="pickTime" value="{{pickTimeDate.index}}" range-key='value' range="{{pickTimeDate.data}}">
+                    <view class="picker">
+                    {{pickTimeDate.data[pickTimeDate.index].value}}<view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="analysis-wrap">
+            <view class="item border-bottom ">
+                <view class="wrap-titile">合同</view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue"><image src="{{iconDomain}}icon-weight.png" />总重量(吨)</view>
+                    <view class="virtue">{{totalData.totalWeight || 0}}</view>
+                    <view class="titile-virtue"><image src="{{iconDomain}}icon-amount.png" />总金额(元)</view>
+                    <view class="virtue">{{totalData.totalAmount || 0}}</view>
+                </view>
+                
+            </view>
+            <view class="item border-bottom">
+                <view class="wrap-titile">货款</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasPayment"></canvas>
+                    <text style="color: #FF9B49;">{{paymentRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已收款(元)</view>
+                    <view class="virtue">{{totalData.payedAmount || 0}}</view>
+                    <view class="titile-virtue">未收款(元)</view>
+                    <view class="virtue">{{totalData.unpayedAmount || 0}}</view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="wrap-titile">货物</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasGoods"></canvas>
+                    <text  style="color: #73D1E8;;">{{goodsRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已发货(吨)</view>
+                    <view class="virtue">{{totalData.receiedWeight || 0}}</view>
+                    <view class="titile-virtue">未发货(吨)</view>
+                    <view class="virtue">{{totalData.underdeliveryWeight || 0}}</view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="wrap-titile">发票</view>
+                <view class="wrap-round">
+                    <canvas class="cir" canvas-id="canvasInvoice"></canvas>
+                    <text style="color:#FBA25A;">{{invoiceRatio}}%</text>
+                </view>
+                <view class="wrap-virtue">
+                    <view class="titile-virtue">已开票(元)</view>
+                    <view class="virtue">{{totalData.receivedInvoicedAmt || 0}}</view>
+                    <view class="titile-virtue">未开票(元)</view>
+                    <view class="virtue">{{totalData.unreceiveInvoicedAmt || 0}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="approval-wrap">
+            <!-- <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-warn.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">到期未生效</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">合同多付款</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">合同欠交/到货未赎</text>
+                    <text class="number">6单</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='PopUpBox'>
+                <image class="icon-image" src="{{ iconDomain }}icon-tip.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">开票异常</text>
+                    <span class="number">6单</span>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view> -->
+            <view class="op-flex-box" bindtap='orders'>
+                <image class="icon-image" src="{{ iconDomain }}icon-more.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">更多订单</text>
+                    <span class="number">{{listDataShort.pageBean.totalCount ||0}}单</span>
+                    <span class="op-right-arrow"></span>
+                </view>
+                <hr/>
+            </view>
+            <view class="op-flex-box" bindtap='PopUpBox'>
+                <image class="icon-image" src="{{ iconDomain }}icon-more.png" lazy-load />
+                <view class="op-flex-box center lh90">
+                    <text class="title center">更多开票</text>
+                    <span class="op-right-arrow"></span>
+                </view>
+            </view>
+        </view>
+    </block>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

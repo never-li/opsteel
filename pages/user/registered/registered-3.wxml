@@ -1,0 +1,10 @@
+<view class="registered-wrap bg-white">
+    <view class="registered-title">设置密码</view>
+    <view class="registered-secondary-title">密码为6-16位英文字符和数字</view>
+    <view class="registered-input-box">
+        <input type="password" class="password" maxlength="16" placeholder="请输入密码" bindinput='passwordInput' bindconfirm="nextStep3" focus/>
+        <input type="password" class="password" maxlength="16" placeholder="请再次确认密码"  bindinput='againPassword' bindconfirm="nextStep3"/>
+    </view>
+    <view class="btn-blue {{(!passwordstatus || !repasswordstatus)?'btn-disable':''}}"  bindtap="nextStep3">完成</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

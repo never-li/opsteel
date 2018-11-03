@@ -1,0 +1,56 @@
+<view class="loanDetails-wrap bg-white">
+    <view class="wrap-box">
+        <view class="wrap-title">
+            <view class="txt">贷款金额(元)</view>
+            <view class="num">50,000.00</view>
+        </view>
+        <view class="wrap-item">
+            <view class="op-flex-box">
+                <view class="name center">已还本金(元)</view>
+                <view class="num">5,000.00</view>
+            </view>
+            <view class="op-flex-box">
+                <view class="name center">未还本金(元)</view>
+                <view class="num">5,000.00</view>
+            </view>
+            <view class="op-flex-box">
+                <view class="name center">计息天数</view>
+                <view class="num">2</view>
+            </view>
+            <view class="op-flex-box">
+                <view class="name center">总利息(元)</view>
+                <view class="num">100</view>
+            </view>
+            <view class="op-flex-box">
+                <view class="name center">贷款周期</view>
+                <view class="num">60天</view>
+            </view>
+            <view class="op-flex-box">
+                <view class="name center">最近还贷日期</view>
+                <view class="num">2017-07-21</view>
+            </view>
+        </view>
+    </view>
+    <view class="wrap-line"></view>
+    <view class="item-box">
+        <view class="item-title op-flex-box">
+            <view class="name center">质押货物明细</view>
+            <view class="num">共<b>10</b>件</view>
+        </view>
+        <view class="item-item-box">
+            <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
+            <view class="item">
+                <view><text>捆包号</text>KB001-0001</view>
+                <view><text>评估货值</text><span>¥</span><b>5000.00</b></view>
+                <view><text>品种</text>冷轧不锈钢卷</view>
+                <view><text>牌号</text>SPCC</view>
+                <view><text>产地</text>柳钢</view>
+                <view><text>规格</text>1.0*1250*C</view>
+                <view><text>存放地</text>宝钢8号库</view>
+                <view><text>重量</text>1.395吨</view>
+            </view>
+            </block>
+        </view>
+    </view>
+   
+</view>

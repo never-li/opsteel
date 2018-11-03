@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "钢厂列表",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

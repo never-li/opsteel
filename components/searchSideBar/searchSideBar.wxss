@@ -1,0 +1,210 @@
+@import '/static/css/common.wxss';
+.search-side-bar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  transition: all 0.3s;
+  font-size: 26rpx;
+}
+.search-side-bar.show {
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.search-side-bar .bar-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 20%;
+  height: 100%;
+}
+.search-side-bar .bar-right {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 80%;
+  height: 100%;
+  background: #fff;
+  box-sizing: border-box;
+}
+.search-side-bar .bar-right .bar-list {
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 88rpx);
+}
+.search-side-bar .bar-right .bar-list .bar-content {
+  position: relative;
+  padding: 10rpx 20rpx 0;
+  border-bottom: 2rpx solid #e6e6e6;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-title {
+  height: 72rpx;
+  line-height: 72rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-title .op-down-arrow {
+  margin: 0;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-title .all {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  color: #999;
+  padding-left: 20rpx;
+  width: 440rpx;
+  box-sizing: border-box;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-title .all > view {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  width: 410rpx;
+  height: 72rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-title .all view {
+  padding-right: 10rpx;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-box {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-box.overflow {
+  height: 72rpx;
+  overflow: hidden;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-box.overflow.weight {
+  height: 102rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-box .input {
+  width: 100%;
+  line-height: 60rpx;
+  padding: 10rpx 20rpx;
+  background: #f5f5f5;
+  border-radius: 6rpx;
+  margin-bottom: 20rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  height: 54rpx;
+  line-height: 54rpx;
+  display: inline-block;
+  position: relative;
+  width: 170rpx;
+  font-size: 24rpx;
+  padding: 0 4rpx;
+  text-align: center;
+  margin-right: 16rpx;
+  margin-bottom: 20rpx;
+  border-radius: 4rpx;
+  background: #f5f5f5;
+  border: 2rpx solid transparent;
+  box-sizing: border-box;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item.weight {
+  height: 82rpx;
+  line-height: 82rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item.weight > view {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item.weight > view.double {
+  font-size: 20rpx !important;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item.two-item {
+  width: 264rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content .bar-item.current {
+  color: #008CFF;
+  background: rgba(0, 140, 255, 0.1);
+  border: 2rpx solid rgba(0, 140, 255, 0.5);
+}
+.search-side-bar .bar-right .bar-list .bar-content.date .bar-item {
+  position: relative;
+  width: 230rpx;
+  padding: 10rpx 20rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content.date .dash {
+  color: #999;
+  margin-right: 16rpx;
+  margin-top: 6rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 24rpx;
+  padding: 10rpx;
+  margin-right: 0;
+  margin-bottom: 20rpx;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item .title {
+  width: 180rpx;
+  text-align: left;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item .box {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item .dash {
+  color: #999;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item .input {
+  width: 150rpx;
+  padding: 0;
+  background: #fff;
+  text-align: center;
+  margin-bottom: 0;
+  border: 2rpx solid #e6e6e6;
+  border-radius: 4rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item.one-item .input {
+  width: 356rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item.one-item .hint-box {
+  max-height: 300rpx;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 2;
+  width: 356rpx;
+  top: 55rpx;
+  background: #fff;
+  border: 2rpx solid #e6e6e6;
+  border-top: 0;
+  border-radius: 4rpx;
+}
+.search-side-bar .bar-right .bar-list .bar-content.spec .spec-item.one-item .hint-box view {
+  width: 100%;
+  line-height: 60rpx;
+}

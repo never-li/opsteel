@@ -1,0 +1,8 @@
+<view class="forget-password-wrap bg-white">
+    <view class="forget-password-icon">
+         <image class="icon-center" src="{{ succIcon }}"></image>
+         <view class="forget-password-msg f36 color-666">恭喜您！找回密码成功</view>
+    </view>
+    <view class="btn-blue" bindtap="backHome">返回首页</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

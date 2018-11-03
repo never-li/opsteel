@@ -1,0 +1,21 @@
+@import '/static/css/common.wxss';
+.approval-success-wrap image {
+  display: block;
+  width: 130rpx;
+  height: 110rpx;
+  margin: 140rpx auto 53rpx auto ;
+}
+.approval-success-wrap .msg {
+  display: block;
+  font-size: 36rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 115rpx;
+}
+.approval-success-wrap .back {
+  display: block;
+  text-align: center;
+  font-size: 32rpx;
+  color: #008CFF;
+  margin-top: 45rpx;
+}

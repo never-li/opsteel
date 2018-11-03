@@ -1,0 +1,28 @@
+<view class="login-wrap bg-white">
+    <view class="logo">
+        <image src="{{ iconDomain }}login-logo.png?v=2.1" lazy-load></image>
+    </view>
+    <view class="title">欢迎登录欧浦智网</view>
+    <view class="login-info f30">
+        <view class="lh90 op-flex-box border-bottom">
+            帐号
+            <input class="pl40 center" type="text" value="{{ accVal }}" bindinput="accInput" bindconfirm="goLogin" placeholder="请输入用户名/手机号" placeholder-style="color: #999;" focus/>
+            <view class="icon-clear" bindtap="clearAcc" wx:if="{{ accVal }}">
+                <image src="{{ iconDomain }}icon-clear.png" lazy-load/>
+            </view>
+        </view>
+        <view class="lh90 op-flex-box border-bottom">
+            密码
+            <input class="pl40 center" type="password" value="{{ pwdVal }}" bindinput="pwdInput" bindconfirm="goLogin" placeholder="请输入密码" placeholder-style="color: #999;"/>
+            <view class="icon-clear" bindtap="clearPwd" wx:if="{{ pwdVal }}">
+                <image src="{{ iconDomain }}icon-clear.png" lazy-load/>
+            </view>
+        </view>
+    </view>
+    <view class="btn-blue {{ (accSucc && pwdSucc)? '' : 'btn-disable' }}" bindtap="goLogin">登 录</view>
+    <view class="pt30 op-flex-box f26 color-blue">
+        <navigator open-type="navigate" url="/pages/user/registered/registered-1">立即注册</navigator>
+        <navigator open-type="navigate" url="/pages/user/forgetPassword/step-1">忘记密码?</navigator>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

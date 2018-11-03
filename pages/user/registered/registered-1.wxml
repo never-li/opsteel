@@ -1,0 +1,10 @@
+<view class="registered-wrap bg-white">
+    <view class="registered-title">绑定手机号</view>
+    <view class="op-flex-box registered-input" >
+        <view class="input-sort"><span><b>+</b>86</span></view>
+        <view class="input-phone center">
+             <input bindinput='watchPhone' type='number' class="weui-input" placeholder="请输入手机号" maxlength="11" bindconfirm="nextStep" focus />
+        </view>
+    </view>
+    <view class="btn-blue {{phoneDefault== true?'btn-disable':''}}" bindtap="nextStep">下一步</view>
+</view>

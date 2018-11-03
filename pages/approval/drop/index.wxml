@@ -1,0 +1,13 @@
+<view class="application-wrap">
+    <view class="top-line"></view>
+
+    <view class="wrap-item" bindtap='details'>
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">订单金额</text><i>¥</i>202929</view>
+        <view><text class="virtue">申请降价</text><b>-<i>¥</i>200</b></view>
+        <view><text class="virtue mb0 ">申请时间</text>2018-3-30</view>
+    </view>
+    <view class="line"></view>
+
+</view>

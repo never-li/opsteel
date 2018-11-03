@@ -1,0 +1,42 @@
+<!-- 我的 user/index.wxml -->
+<view class="user-wrap">
+    <view class="user-hearder op-flex-box bg-white mt20" bindtap="showCompanyName">
+        <view class="icon-group">
+            <image src="{{ logo }}" mode="aspectFill" lazy-load></image>
+        </view>
+        <view class="info_wrap center ml20">
+            <view class="f32 lh60">{{ username }}</view>
+            <view class="f26 lh44">{{ mobile }}</view>
+            <view class="f26 lh44">{{ companyName }}</view>
+        </view>
+        <view class="op-right-arrow" wx:if="{{ companyNameVos.length > 0 }}"></view>
+    </view>
+    <view class="user-content mt20">
+        <view class="op-flex-box lh90 bg-white" wx:for="{{ infoList }}" wx:key="item" data-id="{{ item.id }}" bindtap="goInfo">
+            <view class="center pl20">{{ item.name }}</view>
+            <view class="color-999 pr10" wx:if="{{ item.id == 2 && companyAuthStatus }}">
+                {{ companyAuthStatus == 10? '未认证' : companyAuthStatus == 20? '认证中' : companyAuthStatus == 30? '认证通过' : '认证不通过' }}
+            </view>
+            <view class="op-right-arrow pr20"></view>
+            <hr wx:if="{{ index != infoList.length - 1 }}" />
+        </view>
+        <view class="mt20 lh90 bg-white" bindtap="logOut">
+            <view class="tc">退出登录</view>
+        </view>
+    </view>
+    <view class="popup-mask {{ showPopup? 'show' : '' }}"></view>
+    <view class="popup-content {{ showPopup? 'show' : '' }}">
+        <view class="content">
+            <view class="op-ellipsis" wx:for="{{ companyNameVos }}" wx:key="item" data-item="{{ item }}" bindtap="selCompanyName">
+                <image class="checkbox" src="{{ iconDomain }}round-select.png" lazy-load wx:if="{{ item.checked }}" />
+                <image class="checkbox" src="{{ iconDomain }}round-default.png" lazy-load wx:else />
+                <text>{{ item.companyName }}</text>
+            </view>
+        </view>
+        <view class="button-group">
+            <view class="gray" bindtap="cancelPopup">取消</view>
+            <view class="green" bindtap="changeLogin">确定</view>
+        </view>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

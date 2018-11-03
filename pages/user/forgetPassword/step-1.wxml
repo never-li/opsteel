@@ -1,0 +1,12 @@
+<view class="forget-password-wrap bg-white">
+    <view class="title color-666 f36">用户名</view>
+    <view class="forget-password-input mb80" >
+        <view class="lh90">
+            <input type="text" class="f34" placeholder="请输入用户名" placeholder-style="color: #999;" value="{{ accountValue }}" bindinput='accountInput' bindconfirm="nextStep" focus />
+        </view>
+    </view>
+    <view class="btn-blue {{ accountSucc? '' : 'btn-disable' }}" bindtap="nextStep">下一步</view>
+    <view class="color-666 f26 tc pt60">
+        如忘记用户名，请联系客服：400 887 8388
+    </view>
+</view>

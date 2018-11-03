@@ -1,0 +1,28 @@
+<view class="repayment-warp">
+    <view class="line"></view>
+    <view class="op-flex-box amount bg">
+        <text class="center">还款金额</text>
+        <input bindinput='payBack' type="number" placeholder="请输入还款金额"/>
+    </view>
+    <view class="line"></view>
+    <view class="op-flex-box over bg">
+        <view class="over-text">
+            <text class="p1">余额支付</text>
+            <text class="p2">可用余额：{{overage}}元</text>
+        </view>
+        <view class="over-icon">
+            <image src="{{iconDomain}}round-select.png"/>
+        </view>
+    </view>
+    <view class="btn-bottom {{ status? '' : 'disable'}}" bindtap='pay'>确定还款</view>
+    <view class="flick-code" wx:if='{{flick}}'>
+        <view class="bg" bindtap='back'></view>
+        <view class="flick-box">
+            <view class="back" bindtap='back'></view>
+            <view class="title">请输入交易密码</view>
+            <view class="box">
+                <input class="box-code" type="number" maxlength='6' focus="{{focus}}" bindinput='input'/> 
+            </view>
+        </view>
+    </view>
+</view>

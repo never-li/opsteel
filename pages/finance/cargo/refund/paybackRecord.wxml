@@ -1,0 +1,35 @@
+<block wx:if="{{idTypes== 0}}">
+    <view class="paybackRecord-wrap bg-white">
+        <scroll-view style="height:100%;" scroll-y enable-back-to-top bindscrolltolower="loadPage">
+            <view class="wrap-item border-bottom" wx:for="{{dataList}}" wx:key="item">
+                <view class="item-t op-flex-box">
+                    <view class="center">未还本金<text>2000.00</text></view>
+                    <view class="item-time">2018-04-12</view>
+                    </view>
+                <view class="item-c op-flex-box">
+                    <view  class="center">未还利息<text>145,000</text></view>
+                    <view  class="center">贷款金额<text>145,000</text></view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</block>
+
+<block wx:else>
+    <view class="paybackRecord-wrap bg-white">
+        <scroll-view style="height:100%;" scroll-y enable-back-to-top bindscrolltolower="loadPage">
+            <view class="wrap-item border-bottom" wx:for="{{dataList}}" wx:key="item">
+                <view class="item-t op-flex-box">
+                    <view class="center">还款<text>2000.00</text></view>
+                    <view class="item-time">2018-04-12</view>
+                    </view>
+                <view class="item-c op-flex-box">
+                    <view  class="center">本金<text>145,000</text></view>
+                    <view  class="center">利息<text>145,000</text></view>
+                    <view >监管费<text>145,000</text></view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</block>
+<loadmore noMore="{{ noMore }}"></loadmore>

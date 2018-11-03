@@ -1,0 +1,94 @@
+<view class="details-wrap">
+    <scroll-view scroll-y class="details-scroll">
+    <view class="top-line"></view>
+    <view class="wrap-item">
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">申请客户</text>上海顺义钢铁贸易有限公司<image src="{{iconDomain}}apply-phone.png" /></view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">订单金额</text>¥202929</view>
+        <view><text class="virtue">申请降价</text><b>-<i>¥</i>200</b></view>
+        <view><text class="virtue">预期利润</text><b><i>¥</i>50/吨</b></view>
+        <view><text class="virtue">降价后利润</text><b><i>¥</i>50/吨</b></view>
+        <view class="op-flex-box">
+            <text class="virtue mb0">申请说明</text>
+            <text class="center">因某某某原因，特申请超发。因某某某原因，特申请超发</text>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="son-item">
+        <view class="op-flex-box" bindtap="orderSubkeyShow">
+            <view class="op-down-arrow {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+            <view class="item-title center">该订单有2个子项</view>
+        </view>
+        <view class="normalClass  {{isExpanded? ' collapse' : 'expand'}}">
+            <view class="wrap-item">
+                <view><text class="virtue">订单子项号</text>7CB20180202193</view>
+                <view><text class="virtue">品种</text><b>冷轧不锈钢卷</b></view>
+                <view><text class="virtue">牌号</text><b>DC01</b></view>
+                <view><text class="virtue">规格</text><b>1.1*1250</b></view>
+                <view><text class="virtue">产地</text>首钢</view>
+                <view><text class="virtue">重量</text><b>100吨</b></view>
+                <view><text class="virtue">实发量</text><b>105吨</b></view>
+            </view>
+            <view class="wrap-item">
+                <view><text class="virtue">订单子项号</text>7CB20180202193</view>
+                <view><text class="virtue">品种</text><b>冷轧不锈钢卷</b></view>
+                <view><text class="virtue">牌号</text><b>DC01</b></view>
+                <view><text class="virtue">规格</text><b>1.1*1250</b></view>
+                <view><text class="virtue">产地</text>首钢</view>
+                <view><text class="virtue">重量</text><b>100吨</b></view>
+                <view><text class="virtue">实发量</text><b>105吨</b></view>
+            </view>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="son-item">
+        <view class="op-flex-box" bindtap='ProcessTrackingShow'>
+            <view class="op-down-arrow {{ProcessArrowUp? ' active' : ''}}" bindtap="show"></view>
+            <view class="item-title center">流程跟踪</view>
+        </view>
+        <view class="track-wrap {{ProcessIsExpanded? ' collapse' : 'expand'}}">
+            <view class="op-flex-box item">
+                <view class="time">
+                     <text class="p1">2018-4-2</text>
+                     <text class="p2">19:18:04</text>
+                </view>
+                <view class="user">
+                    <text>张三</text>
+                </view>
+                <view class="operating center">
+                    <text>发起审批</text>
+                </view>
+            </view>
+            <view class="op-flex-box item">
+                <view class="time">
+                     <text class="p1">2018-4-2</text>
+                     <text class="p2">19:18:04</text>
+                </view>
+                <view class="user">
+                    <text>张三</text>
+                </view>
+                <view class="operating center">
+                    <text>同意</text>
+                </view>
+            </view>
+            <view class="op-flex-box item">
+                <view class="time">
+                     <text class="p1">2018-4-2</text>
+                     <text class="p2">19:18:04</text>
+                </view>
+                <view class="user">
+                    <text>张三</text>
+                </view>
+                <view class="operating center">
+                    <text>同意</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    </scroll-view>
+    <view class="btn-group">
+        <view class="left">驳回</view>
+        <view class="right">同意</view>
+    </view>
+</view>

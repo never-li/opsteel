@@ -1,0 +1,254 @@
+<view class="mall-detail-wrap">
+    <scroll-view style="height: {{ scrollH }};" scroll-y enable-back-to-top>
+        <view class="lock-wrap">
+            <view class="swiper">
+                <!-- 正面 -->
+                <view class="swiper-item">
+                    <!-- 已上传 -->
+                    <view class="img" data-url="{{ previewUrls.front }}" bindtap="previewImage" wx:if="{{ previewUrls.front }}">
+                        <image src="{{ previewUrls.front }}" mode="aspectFill" lazy-load/>
+                        <view data-type="1" data-name="{{ fileName.front }}" catchtap="deleteImage">删除</view>
+                    </view>
+                    <!-- 无图片 -->
+                    <view class="img" data-type="1" bindtap="chooseImage" wx:else>
+                        <image class="default" src="{{ iconDomain }}icon-upload.png" mode="aspectFill" lazy-load/>
+                    </view>
+                    <view>正面</view>
+                </view>
+                <!-- 标签 -->
+                <view class="swiper-item">
+                    <view class="img" data-url="{{ previewUrls.sticker }}" bindtap="previewImage" wx:if="{{ previewUrls.sticker }}">
+                        <image src="{{ previewUrls.sticker }}" mode="aspectFill" lazy-load/>
+                        <view data-type="2" data-name="{{ fileName.sticker }}" catchtap="deleteImage">删除</view>
+                    </view>
+                    <view class="img" data-type="2" bindtap="chooseImage" wx:else>
+                        <image class="default" src="{{ iconDomain }}icon-upload.png" mode="aspectFill" lazy-load/>
+                    </view>
+                    <view>标签</view>
+                </view>
+                <!-- 侧面 -->
+                <view class="swiper-item">
+                    <view class="img" data-url="{{ previewUrls.side }}" bindtap="previewImage" wx:if="{{ previewUrls.side }}">
+                        <image src="{{ previewUrls.side }}" mode="aspectFill" lazy-load/>
+                        <view data-type="3" data-name="{{ fileName.side }}" catchtap="deleteImage">删除</view>
+                    </view>
+                    <view class="img" data-type="3" bindtap="chooseImage" wx:else>
+                        <image class="default" src="{{ iconDomain }}icon-upload.png" mode="aspectFill" lazy-load/>
+                    </view>
+                    <view>侧面</view>
+                </view>
+            </view>
+            <view class="pro-intro">
+                <view class="color-red">
+                    <text class="f28">￥</text>
+                    <text class="f48 fb">{{ dt.price }}</text>
+                    <text class="tag">含税价</text>
+                </view>
+                <view class="pro-title lh52">
+                    <view class="op-flex-box">
+                        <view class="f32 fb">
+                            <text wx:if="{{ dt.producingName }}">{{ dt.producingName }}</text>
+                            <text class="border-right" wx:if="{{ dt.productName }}"></text>
+                            <text wx:if="{{ dt.productName }}">{{ dt.productName }}</text>
+                        </view>
+                        <image class="tag-xianhuo" src="{{ iconDomain }}tag-xianhuo.png" lazy-load/>
+                    </view>
+                    <view class="f28">
+                        <text wx:if="{{ dt.shopSign }}">{{ dt.shopSign }}</text>
+                        <text class="border-right" wx:if="{{ dt.spec }}"></text>
+                        <text wx:if="{{ dt.spec }}">{{ dt.spec }}</text>
+                        <text class="border-right" wx:if="{{ dt.pieces }}"></text>
+                        <text wx:if="{{ dt.pieces }}">{{ dt.pieces }}件</text>
+                        <text class="border-right" wx:if="{{ dt.weight }}"></text>
+                        <text wx:if="{{ dt.weight }}">{{ dt.weight }}吨</text>
+                    </view>
+                </view>
+                <view class="pro-info">
+                    <view class="info">
+                        <text class="left">备注</text>
+                        <text class="center">{{ dt.remarks? dt.remarks : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">仓库</text>
+                        <text class="center">{{ dt.storagePlaceName }} {{ dt.subWarehouseName? dt.subWarehouseName : '' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">仓费</text>
+                        <text class="center">以实际仓库收费情况为准</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">供应商</text>
+                        <view class="center">
+                            <image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load wx:if="{{ dt.companyLevel == 1 }}" />
+                            <image class="icon-supplier-v" src="{{ iconDomain }}icon-supplier-v.png" lazy-load wx:if="{{ dt.companyLevel == 2 || dt.companyLevel == 5 }}" />
+                            {{ !dt.isShowProviderName? '已认证供应商' : dt.providerName }}
+                        </view>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">服务承诺</text>
+                        <view class="center image-group">
+                            <view wx:if="{{ dt.shieldStatus == 40 || dt.shieldStatus == 50 }}">
+                                <image class="rectangle" src="{{ iconDomain }}resource-red.png" lazy-load />线下购
+                            </view>
+                            <view wx:if="{{ dt.shieldStatus == 30 }}">
+                                <image class="rectangle" src="{{ iconDomain }}resource-yellow.png" lazy-load />耐心购
+                            </view>
+                            <view wx:if="{{ dt.shieldStatus == 20 }}">
+                                <image class="rectangle" src="{{ iconDomain }}resource-blue.png" lazy-load />放心购
+                            </view>
+                            <view wx:if="{{ dt.shieldStatus == 10 }}">
+                                <image class="rectangle" src="{{ iconDomain }}resource-green.png" lazy-load />极速购
+                            </view>
+                            <view wx:if="{{  dt.hasBook }}">
+                                <image class="square" src="{{ iconDomain }}icon-warranty.png" lazy-load />质保书
+                            </view>
+                            <view wx:if="{{ dt.hasImg }}">
+                                <image class="square" src="{{ iconDomain }}icon-image.png" lazy-load />实物图片
+                            </view>
+                            <view wx:if="{{ dt.isAfterSettle == 10 }}">
+                                <image class="square" src="{{ iconDomain }}icon-houjiesuan.png" lazy-load />后结算
+                            </view>
+                            <view wx:if="{{ dt.bargainedPrice > 0 }}">
+                                <image class="square" src="{{ iconDomain }}icon-bargain.png" lazy-load />砍价
+                            </view>
+                            <view wx:if="{{ dt.businessType == 30 }}">
+                                <image class="square" src="{{ iconDomain }}icon-credit.png" lazy-load />积分
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 商品详情 -->
+            <view class="pro-detail">
+                <view class="dt-title">
+                    <hr class="left"/>
+                    商品详情
+                    <hr class="right"/>
+                </view>
+                <!-- 基本信息 -->
+                <view class="bg-white">
+                    <view class="f30 fb pt20 pl20 pb10">基本信息</view>
+                    <view class="info">
+                        <text class="left">牌号</text>
+                        <text class="center">{{ dt.shopSign? dt.shopSign : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">捆包号</text>
+                        <text class="center">{{ dt.packCode? dt.packCode : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">规格</text>
+                        <text class="center">{{ dt.spec? dt.spec : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">钢厂资源号</text>
+                        <text class="center">{{ dt.resCode? dt.resCode : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">产地</text>
+                        <text class="center">{{ dt.producingName? dt.producingName : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">上架时间</text>
+                        <text class="center">{{ dt.uploadTime }}</text>
+                    </view>
+                </view>
+                <!-- 存放地 -->
+                <view class="bg-white mt20">
+                    <view class="f30 fb pt20 pl20 pb10">存放地</view>
+                    <view class="info">
+                        <text class="left">入库时间</text>
+                        <text class="center">{{ dt.inDate }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">库位</text>
+                        <text class="center">{{ dt.storageLocation? dt.storageLocation : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">仓库</text>
+                        <text class="center">{{ dt.storagePlaceName? dt.storagePlaceName : '—' }}</text>
+                    </view>
+                </view>
+                <!-- 质量信息 -->
+                <view class="bg-white mt20">
+                    <view class="f30 fb pt20 pl20 pb10">质量信息</view>
+                    <view class="info">
+                        <text class="left">出厂时间</text>
+                        <text class="center">{{ dt.outDate }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">技术标准</text>
+                        <text class="center">{{ dt.techStandard? dt.techStandard : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">质量等级</text>
+                        <text class="center">{{ dt.grade == "A01"? '正品（受理质量异议）' : dt.grade == "B01"? '次品/协议品（不受理质量异议）' : '' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">包装方式</text>
+                        <text class="center">{{ dt.packMethod? dt.packMethod : '—' }}</text>
+                    </view>
+                </view>
+                <!-- 其他信息 -->
+                <view class="bg-white mt20">
+                    <view class="f30 fb pt20 pl20 pb10">其他信息</view>
+                    <view class="info">
+                        <text class="left">表面结构</text>
+                        <text class="center">{{ dt.coatingStructure? dt.coatingStructure : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">表面质量</text>
+                        <text class="center">{{ dt.surfaceQuality? dt.surfaceQuality : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">面漆种类</text>
+                        <text class="center">{{ dt.primer? dt.primer : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">镀层种类</text>
+                        <text class="center">{{ dt.coating? dt.coating : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">颜色</text>
+                        <text class="center">{{ dt.color? dt.color : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">镀锌含量</text>
+                        <text class="center">{{ dt.claddingZnLayer? dt.claddingZnLayer : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">表面说明</text>
+                        <text class="center">{{ dt.surfaceDesc? dt.surfaceDesc : '—' }}</text>
+                        <hr/>
+                    </view>
+                    <view class="info">
+                        <text class="left">边部状态</text>
+                        <text class="center">{{ dt.edgeMorphology? dt.edgeMorphology : '—' }}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="btn-bottom {{ (tempFiles.length > 0 && isFront && isSide && isSticker)? '' : 'disable' }}" bindtap="saveImage">保存图片</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

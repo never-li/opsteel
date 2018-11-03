@@ -1,0 +1,41 @@
+<view class="application-wrap">
+    <view class="top-line"></view>
+
+    <view class="wrap-item" bindtap='details'>
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">超发重量</text><b>5吨</b></view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">实发重量</text>105吨</view>
+        <view><text class="virtue mb0 ">申请时间</text>2018-3-30</view>
+    </view>
+    <view class="line"></view>
+
+     <view class="wrap-item">
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">超发重量</text><b>5吨</b></view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">实发重量</text>105吨</view>
+        <view><text class="virtue mb0 ">申请时间</text>2018-3-30</view>
+    </view>
+    <view class="line"></view>
+
+     <view class="wrap-item">
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">超发重量</text><b>5吨</b></view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">实发重量</text>105吨</view>
+        <view><text class="virtue mb0 ">申请时间</text>2018-3-30</view>
+    </view>
+    <view class="line"></view>
+
+
+     <view class="wrap-item">
+        <view><text class="virtue">销售订单号</text>K2018020219383</view>
+        <view><text class="virtue">超发重量</text><b>5吨</b></view>
+        <view><text class="virtue">订单重量</text>100吨</view>
+        <view><text class="virtue">实发重量</text>105吨</view>
+        <view><text class="virtue mb0 ">申请时间</text>2018-3-30</view>
+    </view>
+    <view class="line"></view>
+
+</view>

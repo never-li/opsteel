@@ -1,0 +1,82 @@
+@import '/static/css/common.wxss';
+.resource-wrap {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.resource-wrap .header-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 24rpx !important;
+  color: #666666 !important;
+  height: 50px;
+  background: #fafafa;
+  padding: 0 20rpx;
+}
+.resource-wrap .header-tab .left {
+  justify-content: flex-start;
+}
+.resource-wrap .header-tab .center {
+  flex: 1;
+}
+.resource-wrap .header-tab .right {
+  justify-content: flex-end;
+}
+.resource-wrap .header-tab image {
+  width: 12px;
+  height: 12px;
+  margin-left: 10rpx;
+}
+.resource-wrap .header-tab text {
+  color: #F95355 !important;
+  font-weight: bold !important;
+}
+.resource-wrap .header-tab .right {
+  font-size: 26rpx !important;
+  padding-left: 20rpx;
+  line-height: 50px;
+}
+.resource-wrap .header-tab .in-block {
+  display: inline-block;
+}
+.resource-wrap .scroll-view .content {
+  font-size: 26rpx !important;
+  background: #FFFFFF !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  line-height: 44rpx;
+  padding: 20rpx;
+}
+.resource-wrap .scroll-view .content .left {
+  justify-content: flex-start;
+}
+.resource-wrap .scroll-view .content .center {
+  flex: 1;
+}
+.resource-wrap .scroll-view .content .right {
+  justify-content: flex-end;
+}
+.resource-wrap .scroll-view .content .center .min-width {
+  display: inline-block;
+  min-width: 400rpx;
+}
+.resource-wrap .scroll-view .content .right {
+  text-align: right;
+}
+.resource-wrap .scroll-view .content .right .status {
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+  padding: 0 20rpx;
+  color: #FFFFFF;
+  background: #cccccc;
+  border-radius: 20rpx 0 0 20rpx;
+}
+.resource-wrap .scroll-view .content .right .status.green {
+  background: #4DB050;
+}

@@ -1,0 +1,15 @@
+@import 'css/public.wxss';
+.registered-wrap .registered-icon {
+  margin-top: 140rpx;
+}
+.registered-wrap .registered-icon image {
+  width: 130rpx;
+  height: 110rpx;
+  margin-bottom: 53rpx;
+}
+.registered-wrap .registered-icon .registered-msg {
+  font-size: 36rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin-bottom: 115rpx;
+}

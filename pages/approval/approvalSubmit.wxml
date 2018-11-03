@@ -1,0 +1,22 @@
+<view class="approvalSubmit-wrap">
+    <view class="top-line"></view>
+    <view class="wrap-Submit bg-white">
+        <picker bindchange="bindPickerChange" range="{{array}}">
+            <view class="picker">
+            <view class="op-flex-box">
+                <view class="center">{{array[index]}}</view>
+                <view class="op-down-arrow gray {{arrowUp? ' active' : ''}}" bindtap="show"></view>
+            </view>
+            
+            </view>
+        </picker>
+        <view class="section">
+            <textarea bindblur="bindTextAreaBlur" maxlength="-1" placeholder="请填写审批备注" />
+        </view>
+    </view>
+   
+    <view class="btn-group">
+        <view class="left">返回</view>
+        <view class="right">提交</view>
+    </view>
+</view>

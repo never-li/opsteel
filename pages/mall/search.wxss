@@ -1,0 +1,63 @@
+@import '/static/css/common.wxss';
+.search-wrap {
+  height: 100%;
+  overflow: hidden;
+}
+.search-wrap .wrap-header {
+  width: 100%;
+  height: 112rpx;
+  background: #008CFF;
+}
+.search-wrap .wrap-header .search {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 35rpx;
+  margin: 20rpx 0 20rpx 30rpx;
+  height: 72rpx;
+}
+.search-wrap .wrap-header .search .search-input {
+  width: 520rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding-left: 40rpx;
+  font-size: 26rpx;
+}
+.search-wrap .wrap-header .search .search-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72rpx;
+  height: 72rpx;
+  z-index: 9;
+}
+.search-wrap .wrap-header .search .search-clear image {
+  padding: 20rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.search-wrap .wrap-header .back {
+  font-size: 26rpx !important;
+  color: #FFFFFF;
+  padding: 10rpx 10rpx;
+  margin: 0 11rpx 0 17rpx;
+}
+.search-wrap .wrap-keyWords {
+  margin: 0 24rpx;
+}
+.search-wrap .wrap-keyWords .history .title .trashIcon {
+  width: 27rpx;
+  height: 26rpx;
+  padding: 10rpx;
+}
+.search-wrap .wrap-keyWords .title {
+  font-size: 26rpx !important;
+  margin-top: 34rpx;
+  margin-bottom: 25rpx;
+}
+.search-wrap .wrap-keyWords .options li {
+  display: inline-block;
+  font-size: 26rpx !important;
+  background: #F5F5F5;
+  padding: 13rpx 24rpx;
+  margin: 0 20rpx 24rpx 0;
+}

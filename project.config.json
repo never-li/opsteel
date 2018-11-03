@@ -1,0 +1,193 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wxce1c5bd8d3046de4",
+	"projectname": "%E6%AC%A7%E6%B5%A6%E9%92%A2%E7%BD%91new",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 25,
+			"list": [
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "经营报告",
+					"pathName": "pages/operate/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "demo",
+					"pathName": "pages/demo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "流程审批",
+					"pathName": "pages/approval/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "超发申请",
+					"pathName": "pages/approval/application/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "超发申请详情",
+					"pathName": "pages/approval/application/details",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "审批",
+					"pathName": "pages/approval/approvalSubmit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "超发申请成功",
+					"pathName": "pages/approval/success",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "采购合同审批",
+					"pathName": "pages/approval/purchase/details",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "降价审批",
+					"pathName": "pages/approval/drop/index",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "采购分析",
+					"pathName": "pages/sale/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "采购订单",
+					"pathName": "pages/purchase/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "金融服务",
+					"pathName": "pages/finance/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的白条",
+					"pathName": "pages/finance/whitestrip/index",
+					"query": ""
+				},
+				{
+					"id": 15,
+					"name": "还钱",
+					"pathName": "pages/finance/whitestrip/repayment/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的货押",
+					"pathName": "pages/finance/cargo/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我要还款",
+					"pathName": "pages/finance/cargo/refund/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我要还钱-支付",
+					"pathName": "pages/finance/cargo/refund/payback",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "还款记录",
+					"pathName": "pages/finance/cargo/refund/paybackRecord",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "我要换货",
+					"pathName": "pages/finance/cargo/exchange/pledge",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "换货确认",
+					"pathName": "pages/finance/cargo/exchange/confirmMessage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "换货记录",
+					"pathName": "pages/finance/cargo/exchange/record",
+					"query": ""
+				},
+				{
+					"id": 23,
+					"name": "我要䃼货",
+					"pathName": "pages/finance/cargo/supply/confirmMessage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "记录查询",
+					"pathName": "pages/finance/cargo/inquiry/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "贷款详情",
+					"pathName": "pages/finance/cargo/inquiry/loanDetails",
+					"query": ""
+				}
+			]
+		}
+	}
+}

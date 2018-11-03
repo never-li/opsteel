@@ -1,0 +1,7 @@
+<view class="scanlogin-wrap bg-white">
+    <image src="{{ iconDomain }}login.png"></image>
+    <view class="f32 pt60">欧浦智网登录确认</view>
+    <button class="btn-blue" bindtap="pcLogin">确认登录</button>
+    <view class="color-666 pt30 f32 lh90" bindtap="backHome">取消登录</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

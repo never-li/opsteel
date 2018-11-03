@@ -1,0 +1,6 @@
+<view class="approval-success-wrap">
+    <image  src="{{iconDomain}}icon-success.png" lazy-load/>
+    <text class="msg">补货成功</text>
+    <view class="btn-blue" bindtap="returnHome">返回首页</view>
+    <view class="back" bindtap="returnRecord" >查看补货记录</view>
+</view>

@@ -1,0 +1,542 @@
+<view class="search-side-bar {{ showSideBar? 'show' : ''}}">
+    <view class="bar-left" bindtap="closeSideBar"></view>
+    <view class="bar-right">
+        <view class="bar-list">
+            <!-- 搜索框 -->
+            <view class="bar-content" wx:if="{{ showInput }}">
+                <view class="bar-title">
+                    {{ inputTitle }}
+                </view>
+                <view class="bar-box">
+                    <input class="input" type="text" placeholder="请输入{{ inputTitle }}" placeholder-style="color: #999" value="{{ inputValue }}" bindinput="inputChange"/>
+                </view>
+            </view>
+            <!-- 日期 -->
+            <view class="bar-content date" wx:if="{{ showDate }}">
+                <view class="bar-title">
+                    <view>{{ dateTitle }}</view>
+                </view>
+                <view class="bar-box">
+                    <picker mode="date" value="{{ startDate }}" bindchange="startDateChange">
+                        <view class="bar-item">
+                            {{ startDate? startDate : '开始日期' }}
+                            <i wx:if="{{ !startDate }}" class="op-down-arrow gray"></i>
+                        </view>
+                    </picker>
+                    <text class="dash">—</text>
+                    <picker mode="date" value="{{ endDate }}" bindchange="endDateChange">
+                        <view class="bar-item">
+                            {{ endDate? endDate : '结束日期' }}
+                            <i wx:if="{{ !endDate }}" class="op-down-arrow gray"></i>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <!-- 仓库 -->
+            <view class="bar-content" wx:if="{{ showWarehouse }}">
+                <view class="bar-title">
+                    <view>仓库</view>
+                    <view class="all" bindtap="showAllWarehouse" wx:if="{{ warehouseData.length > 3 || checkedWarehouse.length > 0 }}">
+                        <view wx:if="{{ checkedWarehouse.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedWarehouse }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllWarehouse? 'active' : '' }}" wx:if="{{ warehouseData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllWarehouse? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ warehouseData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkWarehouse">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 小品种 -->
+            <view class="bar-content" wx:if="{{ showSmallType && smallTypeData.length > 0 }}">
+                <view class="bar-title">
+                    <view>小品种</view>
+                    <view class="all" bindtap="showAllSmallType" wx:if="{{ smallTypeData.length > 3 || checkedSmallType.length > 0 }}">
+                        <view wx:if="{{ checkedSmallType.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedSmallType }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllSmallType? 'active' : '' }}" wx:if="{{ smallTypeData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllSmallType? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ smallTypeData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkSmallType">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 品种 -->
+            <view class="bar-content" wx:if="{{ showType && typeData.length > 0 }}">
+                <view class="bar-title">
+                    <view>品种</view>
+                    <view class="all" bindtap="showAllType" wx:if="{{ typeData.length > 3 || checkedType.length > 0 }}">
+                        <view wx:if="{{ checkedType.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedType }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllType? 'active' : '' }}" wx:if="{{ typeData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllType? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ typeData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkType">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 规格 复选框 -->
+            <view class="bar-content" wx:if="{{ showSpec && specData.length > 0 }}">
+                <view class="bar-title">
+                    <view>规格</view>
+                    <view class="all" bindtap="showAllSpec" wx:if="{{ specData.length > 3 || checkedSpec.length > 0 }}">
+                        <view wx:if="{{ checkedSpec.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedSpec }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllSpec? 'active' : '' }}" wx:if="{{ specData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllSpec? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ specData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkSpec">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 牌号 -->
+            <view class="bar-content" wx:if="{{ showShopSign && shopSignData.length > 0 }}">
+                <view class="bar-title">
+                    <view>牌号</view>
+                    <view class="all" bindtap="showAllShopSign" wx:if="{{ shopSignData.length > 3 || checkedShopSign.length > 0 }}">
+                        <view wx:if="{{ checkedShopSign.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedShopSign }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllShopSign? 'active' : '' }}" wx:if="{{ shopSignData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllShopSign? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ shopSignData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkShopSign">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 产地 没重量 -->
+            <view class="bar-content" wx:if="{{ showOrigin && originData.length > 0 }}">
+                <view class="bar-title">
+                    <view>产地</view>
+                    <view class="all" bindtap="showAllOrigin" wx:if="{{ originData.length > 3 || checkedOrigin.length > 0 }}">
+                        <view wx:if="{{ checkedOrigin.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedOrigin }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllOrigin? 'active' : '' }}" wx:if="{{ originData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllOrigin? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ originData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkOrigin">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 产地 有重量 -->
+            <view class="bar-content" wx:if="{{ showOriginWeight && originWeightData.length > 0 }}">
+                <view class="bar-title">
+                    <view>产地</view>
+                    <view class="all" bindtap="showAllOriginWeight" wx:if="{{ originWeightData.length > 3 || checkedOriginWeight.length > 0 }}">
+                        <view wx:if="{{ checkedOriginWeight.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedOriginWeight }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllOriginWeight? 'active' : '' }}" wx:if="{{ originWeightData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllOriginWeight? '' : 'overflow weight' }}">
+                    <view class="bar-item weight {{ item.checked? 'current' : ''}}" wx:for="{{ originWeightData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkOriginWeight">
+                        <view>{{ item.name }}</view>
+                        <view class="double">共{{ item.weight }}吨</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 存放地 -->
+            <view class="bar-content" wx:if="{{ showStorage && storageData.length > 0 }}">
+                <view class="bar-title">
+                    <view>存放地</view>
+                    <view class="all" bindtap="showAllStorage" wx:if="{{ storageData.length > 3 || checkedStorage.length > 0 }}">
+                        <view wx:if="{{ checkedStorage.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedStorage }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllStorage? 'active' : '' }}" wx:if="{{ storageData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllStorage? '' : 'overflow weight' }}">
+                    <view class="bar-item weight {{ item.checked? 'current' : ''}}" wx:for="{{ storageData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkStorage">
+                        <view>{{ item.name }}</view>
+                        <view class="double">共{{ item.weight }}吨</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 无重量存放地 -->
+            <view class="bar-content" wx:if="{{ showStorageNoWeight && storageDataNoWeight.length > 0 }}">
+                <view class="bar-title">
+                    <view>存放地</view>
+                    <view class="all" bindtap="showAllStorageNoWeight" wx:if="{{ storageDataNoWeight.length > 3 || checkedStorageNoWeight.length > 0 }}">
+                        <view wx:if="{{ checkedStorageNoWeight.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedStorageNoWeight }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllStorageNoWeight? 'active' : '' }}" wx:if="{{ storageDataNoWeight.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllStorageNoWeight? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ storageDataNoWeight }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkStorageNoWeight">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 服务承诺 -->
+            <view class="bar-content" wx:if="{{ showService }}">
+                <view class="bar-title">
+                    <view>服务承诺</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ serviceData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkService">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 规格 输入框 -->
+            <view class="bar-content spec" wx:if="{{ showSpecInput }}">
+                <view class="bar-title">
+                    <view>规格</view>
+                </view>
+                <view class="bar-box">
+                    <view class="spec-item">
+                        <text class="title">厚度/直径/高度</text>
+                        <view class="box">
+                            <input class="input" type="digit" value="{{ thickMin }}" bindinput="inputThickMin"/>
+                            <text class="dash">—</text>
+                            <input class="input" type="digit" value="{{ thickMax }}" bindinput="inputThickMax"/>
+                        </view>
+                    </view>
+                    <view class="spec-item">
+                        <text class="title">宽度/壁厚</text>
+                        <view class="box">
+                            <input class="input" type="digit" value="{{ widthMin }}" bindinput="inputWidthMin"/>
+                            <text class="dash">—</text>
+                            <input class="input" type="digit" value="{{ widthMax }}" bindinput="inputWidthMax"/>
+                        </view>
+                    </view>
+                    <view class="spec-item">
+                        <text class="title">长度</text>
+                        <view class="box">
+                            <input class="input" type="digit" value="{{ lengthMin }}" bindinput="inputLengthMin"/>
+                            <text class="dash">—</text>
+                            <input class="input" type="digit" value="{{ lengthMax }}" bindinput="inputLengthMax"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 其他 -->
+            <view class="bar-content spec" wx:if="{{ showOthers }}">
+                <view class="bar-title">
+                    <view>其他</view>
+                </view>
+                <view class="bar-box">
+                    <view class="spec-item one-item">
+                        <text class="title">供应商</text>
+                        <view class="box p-rl">
+                            <input class="input" type="text" placeholder="支持模糊匹配" placeholder-style="color: #999;" value="{{ providerName }}" bindinput="inputProviderName"/>
+                            <view wx:if="{{ showProviderName && providerNameData.length > 0 }}">
+                                <view class="hint-box op-flex-box" wx:for="providerNameData" wx:key="item">
+                                    <view data-name="{{ item.name }}" bindtap="confirmProviderName">{{ item.name }}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="spec-item one-item">
+                        <text class="title">捆包号</text>
+                        <view class="box">
+                            <input class="input" type="text" placeholder="支持模糊匹配" placeholder-style="color: #999;" value="{{ packCode }}" bindinput="inputPackCode"/>
+                            <view wx:if="{{ showPackCode && packCodeData.length > 0 }}">
+                                <view class="hint-box op-flex-box" wx:for="packCodeData" wx:key="item">
+                                    <view data-name="{{ item.name }}" bindtap="confirmPackCode">{{ item.name }}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="spec-item one-item">
+                        <text class="title">仓库原料编号</text>
+                        <view class="box">
+                            <input class="input" type="text" placeholder="支持模糊匹配" placeholder-style="color: #999;" value="{{ maHandCodes }}" bindinput="inputMaHandCodes"/>
+                            <view wx:if="{{ showMaHandCodes && maHandCodesData.length > 0 }}">
+                                <view class="hint-box op-flex-box" wx:for="maHandCodesData" wx:key="item">
+                                    <view data-name="{{ item.name }}" bindtap="confirmMaHandCodes">{{ item.name }}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="spec-item">
+                        <text class="title">重量</text>
+                        <view class="box">
+                            <input class="input" type="digit" value="{{ weightMin }}" bindinput="inputWeightMin"/>
+                            <text class="dash">—</text>
+                            <input class="input" type="digit" value="{{ weightMax }}" bindinput="inputWeightMax"/>
+                        </view>
+                    </view>
+                    <!-- <view class="spec-item one-item">
+                        <text class="title">质量等级</text>
+                        <view class="box">
+                            <picker mode="selector" range="{{ gradeData }}" range-key="name" bindchange="gradeChange">
+                                <view class="input">
+                                    {{ selGrade.name? selGrade.name : '请选择' }}
+                                    <i class="op-down-arrow gray" wx:if="{{ !selGrade.name }}"></i>
+                                </view>
+                            </picker>
+                        </view>
+                    </view> -->
+                    <!-- <view class="spec-item">
+                        <text class="title">价格</text>
+                        <view class="box">
+                            <input class="input" type="digit" value="{{ minPrice }}" bindinput="inputMinPrice"/>
+                            <text class="dash">—</text>
+                            <input class="input" type="digit" value="{{ maxPrice }}" bindinput="inputMaxPrice"/>
+                        </view>
+                    </view> -->
+                    <!-- <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ resourceData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkResource">
+                        {{ item.name }}
+                    </view> -->
+                </view>
+            </view>
+            <!-- 交货月 -->
+            <view class="bar-content" wx:if="{{ showDeliveryMonth && deliveryMonthData.length > 0 }}">
+                <view class="bar-title">
+                    <view>交货月</view>
+                    <view class="all" bindtap="showAllDeliveryMonth" wx:if="{{ deliveryMonthData.length > 3 || checkedDeliveryMonth.length > 0 }}">
+                        <view wx:if="{{ checkedDeliveryMonth.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedDeliveryMonth }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllDeliveryMonth? 'active' : '' }}" wx:if="{{ deliveryMonthData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllDeliveryMonth? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ deliveryMonthData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkDeliveryMonth">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 交货地 -->
+            <view class="bar-content" wx:if="{{ showDeliveryPlace && deliveryPlaceData.length > 0 }}">
+                <view class="bar-title">
+                    <view>交货地</view>
+                    <view class="all" bindtap="showAllDeliveryPlace" wx:if="{{ deliveryPlaceData.length > 3 || checkedDeliveryPlace.length > 0 }}">
+                        <view wx:if="{{ checkedDeliveryPlace.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedDeliveryPlace }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllDeliveryPlace? 'active' : '' }}" wx:if="{{ deliveryPlaceData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllDeliveryPlace? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ deliveryPlaceData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkDeliveryPlace">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 订单号 -->
+            <view class="bar-content" wx:if="{{ showOrderNo && orderNoData.length > 0 }}">
+                <view class="bar-title">
+                    <view>订单号</view>
+                    <view class="all" bindtap="showAllOrderNo" wx:if="{{ orderNoData.length > 3 || checkedOrderNo.length > 0 }}">
+                        <view wx:if="{{ checkedOrderNo.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedOrderNo }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllOrderNo? 'active' : '' }}" wx:if="{{ orderNoData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllOrderNo? '' : 'overflow' }}">
+                    <view class="bar-item two-item {{ item.checked? 'current' : ''}}" wx:for="{{ orderNoData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkOrderNo">
+                        <view>{{ item.name }}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 供应商 -->
+            <view class="bar-content" wx:if="{{ showProvider && providerData.length > 0 }}">
+                <view class="bar-title">
+                    <view>供应商</view>
+                    <view class="all" bindtap="showAllProvider" wx:if="{{ providerData.length > 3 || checkedProvider.length > 0 }}">
+                        <view wx:if="{{ checkedProvider.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedProvider }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllProvider? 'active' : '' }}" wx:if="{{ providerData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllProvider? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ providerData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkProvider">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 客户 -->
+            <view class="bar-content" wx:if="{{ showCustomer && customerData.length > 0 }}">
+                <view class="bar-title">
+                    <view>客户</view>
+                    <view class="all" bindtap="showAllCustomer" wx:if="{{ customerData.length > 3 || checkedCustomer.length > 0 }}">
+                        <view wx:if="{{ checkedCustomer.length > 0 }}">
+                            <view class="color-blue" wx:for="{{ checkedCustomer }}" wx:key="item">
+                                {{ item.name }}
+                            </view>
+                        </view>
+                        <view wx:else>全部</view>
+                        <i class="op-down-arrow gray {{ showAllCustomer? 'active' : '' }}" wx:if="{{ customerData.length > 3 }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllCustomer? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ customerData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkCustomer">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 付款性质 -->
+            <view class="bar-content" wx:if="{{ showPayType }}">
+                <view class="bar-title">
+                    <view>付款性质</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ payTypeData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkPayType">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 出资方 -->
+            <view class="bar-content" wx:if="{{ showFunder && funderData.length > 0 }}">
+                <view class="bar-title">
+                    <view>出资方</view>
+                    <view class="all" bindtap="showAllFunder" wx:if="{{ funderData.length > 3 }}">
+                        全部<i class="op-down-arrow gray {{ showAllFunder? 'active' : '' }}"></i>
+                    </view>
+                </view>
+                <view class="bar-box {{ showAllFunder? '' : 'overflow' }}">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ funderData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkFunder">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 状态 -->
+            <view class="bar-content" wx:if="{{ showStatus }}">
+                <view class="bar-title">
+                    <view>状态</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ statusData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkStatus">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 订单状态 -->
+            <view class="bar-content" wx:if="{{ showOrderStatus }}">
+                <view class="bar-title">
+                    <view>订单状态</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ orderStatusData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkOrderStatus">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 订单类型 -->
+            <view class="bar-content" wx:if="{{ showOrderType }}">
+                <view class="bar-title">
+                    <view>订单类型</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ orderTypeData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkOrderType">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 周期 -->
+            <view class="bar-content" wx:if="{{ showPeriod }}">
+                <view class="bar-title">
+                    <view>周期</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ periodData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkPeriod">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 资金流向 -->
+            <view class="bar-content" wx:if="{{ showFundFlow }}">
+                <view class="bar-title">
+                    <view>资金流向</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ fundFlowData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkFundFlow">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 款项用途 -->
+            <view class="bar-content" wx:if="{{ showFundUse }}">
+                <view class="bar-title">
+                    <view>款项用途</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ item.checked? 'current' : ''}}" wx:for="{{ fundUseData }}" wx:key="item" data-code="{{ item.code }}" data-index="{{ index }}" bindtap="checkFundUse">
+                        {{ item.name }}
+                    </view>
+                </view>
+            </view>
+            <!-- 实物图片 -->
+            <view class="bar-content" wx:if="{{ showImage }}">
+                <view class="bar-title">
+                    <view>实物图片</view>
+                </view>
+                <view class="bar-box">
+                    <view class="bar-item {{ hasImage.checked? 'current' : ''}}" data-code="{{ hasImage.code }}" bindtap="checkImage">
+                        {{ hasImage.name }}
+                    </view>
+                    <view class="bar-item {{ noImage.checked? 'current' : ''}}" data-code="{{ noImage.code }}" bindtap="checkImage">
+                        {{ noImage.name }}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view class="btn left" bindtap="resetSideBar">重置</view>
+            <view class="btn right" bindtap="confirmSideBar">确定</view>
+        </view>
+    </view>
+</view>

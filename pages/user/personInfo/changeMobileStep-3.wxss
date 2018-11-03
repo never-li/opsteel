@@ -1,0 +1,18 @@
+@import '/static/css/common.wxss';
+.change-mobile-wrap {
+  height: 100%;
+  padding-top: 140rpx;
+  box-sizing: border-box;
+}
+.change-mobile-wrap .change-mobile-icon {
+  text-align: center;
+}
+.change-mobile-wrap .change-mobile-icon image {
+  width: 130rpx;
+  height: 110rpx;
+  margin-bottom: 53rpx;
+}
+.change-mobile-wrap .change-mobile-icon .change-mobile-msg {
+  line-height: 50rpx;
+  margin-bottom: 115rpx;
+}

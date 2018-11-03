@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+      "ec-canvas": "../../utils/ec-canvas/ec-canvas",
+      "toast": "/components/toast/toast"
+    },
+    "navigationBarTitleText": "经营报告"
+}

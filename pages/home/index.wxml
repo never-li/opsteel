@@ -1,0 +1,46 @@
+<!-- 首页 home/index.wxml -->
+<view class="index-wrap bg-white">
+    <view class="op-flex-box wrap-head">
+        <view class="head-scan" bindtap="goScan"><image class="scan-icon" src="{{scanIcon}}" /></view>
+        <view class="op-flex-box head-search center" bindtap="goSearch">
+            <span><image class="search-icon" src="{{searchIcon}}" /></span>
+            <view class="search-input center">品种/牌号/产地/存放地/规格/供应商/捆包号</view>
+        </view>
+    </view>
+    <!-- 轮播 -->
+    <swiper class="wrap-banner" autoplay="true" circular="true">
+        <swiper-item wx:for="{{ imgUrls }}" wx:key="item">
+            <image src="{{ item }}" class="slide-image" mode="aspectFit" lazy-load="true"></image>
+        </swiper-item>
+    </swiper>
+    <view class="index-border"></view>
+    <!-- 图标 -->
+    <view class="op-flex-box icons-group">
+        <block wx:for="{{ iconsGroup }}" wx:key="item">
+            <view class="group-icon" bindtap="tapMdl" wx:if="{{ item.isShow && !item.isHidden }}" data-name="{{ item.name }}" data-url="{{ item.url }}" data-type="{{ item.type }}">
+                <image src="{{ item.gruopIcon }}" lazy-load="true"/>
+                <span class="pt10">{{ item.name }}</span>
+            </view>
+        </block>
+    </view>
+    <view class="index-border"></view>
+    <!-- 区域 -->
+    <view class="area-distributed">
+        <view class="title">{{areaTitle}}</view>
+        <view class="container">
+            <ec-canvas  id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+        </view>
+        <view class="Leaderboard" wx:if="{{ areaDataTable.length > 0 }}">
+            <view class="subtitle">{{subtitle}}</view>
+            <view class="table">
+                <ul>
+                    <li class="table-title"><span class="rank">排名</span><span class="area">地区</span><span class="amount">{{amountName}}</span></li>
+                    <block wx:for="{{areaDataTable}}"  wx:key="item" wx:if="{{index<5}}">
+                        <li><span class="rank">{{index+1}}</span><span  class="area">{{item.name}}</span><span class="amount">{{item.value}}</span></li>
+                    </block>
+                </ul>
+            </view>
+        </view>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

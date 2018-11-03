@@ -1,0 +1,8 @@
+<view class="op-load-more-box">
+    <view class="loading-icon" hidden="{{ noMore }}">
+        <image src="{{ loadingIcon }}"></image>
+    </view>
+    <view class="loading-text">
+        {{ noMore? '加载完成' : '加载中……'}}
+    </view>
+</view>

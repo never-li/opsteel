@@ -1,0 +1,17 @@
+@import '/static/css/common.wxss';
+.forget-password-wrap {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 60rpx 0rpx;
+}
+.forget-password-wrap .title {
+  height: 120rpx;
+}
+.forget-password-wrap .forget-password-input > view {
+  border-bottom: 2rpx solid #f1f1f1;
+}
+.forget-password-wrap .forget-password-input input {
+  height: 90rpx;
+  line-height: 90rpx;
+}

@@ -1,0 +1,105 @@
+<view class="companyinfo-wrap">
+    <view class="content bg-white">
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">公司全称</view>
+            <input class="center right tr pr20" placeholder="{{ companyInfo.name || '请输入公司名称' }}" placeholder-style="color: #ccc;" focus value="{{ companyName }}" bindinput="companyNameInput" bindblur="checkTaxNum" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.name }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">税号</view>
+            <view class="center right tr pr20" wx:if="{{ companyInfo.authStatus == 10 }}">
+                {{ taxNum }}
+            </view>
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.taxNum }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">开户银行</view>
+            <input class="center right tr pr20" placeholder="请输入开户银行" placeholder-style="color: #ccc;" value="{{ bank }}" bindinput="bankInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.bank }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">开户行账号</view>
+            <input type="number" class="center right tr pr20" placeholder="请输入开户行账号" placeholder-style="color: #ccc;" value="{{ bankAccount }}" bindinput="bankAccountInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.bankAccount }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">开票地址</view>
+            <input class="center right tr pr20" placeholder="请输入开票地址" placeholder-style="color: #ccc;" value="{{ billAddress }}" bindinput="billAddressInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.billAddress }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">开票电话</view>
+            <input class="center right tr pr20" placeholder="请输入开票电话" placeholder-style="color: #ccc;" value="{{ billTel }}" bindinput="billTelInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyDetailInfo.invoicePhone || '—' }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">收/退款银行</view>
+            <input class="center right tr pr20" placeholder="请输入收/退款银行" placeholder-style="color: #ccc;" value="{{ refundBankName }}" bindinput="refundBankNameInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ baseBankAccountInfo.bankFullName }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">收/退款账号</view>
+            <input type="number" class="center right tr pr20" placeholder="请输入收/退款账号" placeholder-style="color: #ccc;" value="{{ refundBankAccount }}" bindinput="refundBankAccountInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ baseBankAccountInfo.bankAccount }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">传真</view>
+            <input class="center right tr pr20" placeholder="请输入传真" placeholder-style="color: #ccc;" value="{{ faxNum }}" bindinput="faxNumInput" wx:if="{{ companyInfo.authStatus == 10 }}" />
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.faxNum || '—' }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">一般纳税人</view>
+            <view wx:if="{{ companyInfo.authStatus == 10 }}">
+                <radio-group class="center right tr pr20" bindchange="taxTypeChange">
+                    <label class="pl20" wx:for="{{ taxTypeArr }}" wx:key="item">
+                        <radio color="#008CFF" value="{{ item.code }}" checked="{{ item.checked }}"/>{{ item.value }}
+                    </label>
+                </radio-group>
+            </view>
+            <view class="center right tr pr20" wx:else>
+                {{ companyInfo.taxType == 1? '是' : '否' }}
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">认证状态</view>
+            <!-- 10，未认证；20，认证中；30，认证通过；40，认证不通过 -->
+            <view class="center right tr pr20 {{ companyInfo.authStatus == 30? '' : companyInfo.authStatus == 40? 'color-red' : 'color-blue'}}">
+                {{ companyInfo.authStatus == 10? '未认证' : companyInfo.authStatus == 20? '认证中' : companyInfo.authStatus == 30? '认证通过' : companyInfo.authStatus == 40? '认证不通过(请联系客服：0757-28908888)' : '—' }}
+            </view>
+            <!-- <view class="op-right-arrow pr20" wx:if="{{ companyInfo.authStatus == 10 }}"></view> -->
+            <hr />
+        </view>
+    </view>
+    <view class="btn-bottom" bindtap="goAuth" wx:if="{{ companyInfo.authStatus == 10 }}">
+        {{ companyInfo.authStatus == 10? '去认证' : companyInfo.authStatus == 40? '重新上传图片' : '' }}
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

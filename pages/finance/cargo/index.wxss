@@ -1,0 +1,20 @@
+@import '/static/css/common.wxss';
+.cargo-wrap {
+  background: #FFFFFF;
+  padding-left: 24rpx;
+  height: 100%;
+}
+.cargo-wrap .item image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 23rpx;
+}
+.cargo-wrap .item text {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: #333333;
+  margin: 29rpx 0;
+}
+.cargo-wrap .item .op-right-arrow {
+  margin-right: 24rpx;
+}

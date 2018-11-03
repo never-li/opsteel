@@ -1,0 +1,36 @@
+<view class="search-wrap bg-white">
+    <view class="op-flex-box wrap-header">
+        <view class="search center">
+             <input class="search-input" type="text" value="{{ searchVal }}" confirm-type="search" bindinput="inputSearch" bindconfirm="comfirmSearch" placeholder="品种/牌号/产地/存放地/规格/供应商/捆包号" placeholder-style="color: #999999" focus />
+             <view class="search-clear" bindtap='clearinput' wx:if="{{ searchVal }}"><image src="{{ clearIcon }}"/></view>
+        </view>
+        <view class="back" bindtap='backPage'>取消</view>
+    </view>
+    <view>
+        <view class="wrap-keyWords">
+            <view class="history" wx:if='{{ searchStorage.length > 0 }}'>
+                <view class="op-flex-box title">
+                    历史搜索
+                    <image class="trashIcon" bindtap="clearHistory" src="{{ trashIcon }}" />
+                </view>
+                <view class="options">
+                    <ul>
+                        <block wx:for="{{ searchStorage }}"  wx:key="item">
+                            <li  data-item="{{ item }}" bindtap="comfirmSearch">{{ item }}</li>
+                        </block>
+                    </ul>
+                </view>
+            </view>
+            <view class="heat">
+                <view class="title">热门搜索</view>
+                <view class="options">
+                    <ul>
+                    <block wx:for="{{ searchHot }}"  wx:key="item">
+                            <li data-item="{{ item }}" bindtap="comfirmSearch">{{ item }}</li>
+                        </block>
+                    </ul>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

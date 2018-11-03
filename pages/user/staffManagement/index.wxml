@@ -1,0 +1,34 @@
+<view class="staff-wrap">
+    <scroll-view style="height: {{ scrollH }};" scroll-y enable-back-to-top bindscrolltolower="loadPage">
+        <view class="content p-rl bg-white f26" wx:for="{{ dataList }}" wx:key="item">
+            <image class="icon-tag" src="{{ iconDomain }}tag-ok.png" wx:if="{{ item.state == 0 }}" lazy-load></image>
+            <image class="icon-tag" src="{{ iconDomain }}tag-minus.png" wx:if="{{ item.state == 1 }}" lazy-load></image>
+            <view class="op-flex-box">
+                <view class="center op-flex-box">
+                    <view>
+                        <text class="color-999 left">用户名</text>
+                        <text>{{ item.username }}</text>
+                    </view>
+                    <view>
+                        <text class="color-999 right">职员姓名</text>
+                        <text>{{ item.nickname || '' }}</text>
+                    </view>
+                    <view>
+                        <text class="color-999 left">部门</text>
+                        <text>{{ item.departmentName || '' }}</text>
+                    </view>
+                    <view>
+                        <text class="color-999 right">职员角色</text>
+                        <text>{{ item.roleEntities || '' }}</text>
+                    </view>
+                </view>
+                <view class="right-box" data-mobile="{{ item.mobile }}" bindtap="makeCall">
+                    <image src="{{ iconDomain }}icon-phone.png" lazy-load></image>
+                </view>
+            </view>
+            <hr wx:if="{{ index != dataList.length - 1 }}"/>
+        </view>
+        <loadmore noMore="{{ noMore }}"></loadmore>
+    </scroll-view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

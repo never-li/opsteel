@@ -1,0 +1,24 @@
+@import '/static/css/common.wxss';
+.approvalSubmit-wrap .top-line {
+  width: 100%;
+  height: 20rpx;
+  background: #FAFAFA;
+}
+.approvalSubmit-wrap .wrap-Submit {
+  padding: 24rpx;
+}
+.approvalSubmit-wrap .wrap-Submit .picker {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #E8E8E8;
+}
+.approvalSubmit-wrap .section {
+  margin-top: 33rpx;
+}
+.approvalSubmit-wrap .section textarea {
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 46rpx;
+  height: 350rpx;
+  color: #333333;
+}

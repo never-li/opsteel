@@ -1,0 +1,186 @@
+<view class="mall-wrap">
+    <!-- 搜索 -->
+    <view class="header-tab op-flex-box">
+        <view class="{{ tab == ''? 'current' : '' }}" data-num="" data-tab="" bindtap="changeRank">综合</view>
+        <view class="{{ (tab == 'price' || tab == 'oc.min_price' || tab == 'spec')? 'current' : '' }}" data-tab="{{ type == 0? 'price' : type == 1? 'oc.min_price' : 'spec' }}" data-num="2" bindtap="changeRank">
+            {{ type == 0? '价格' : type == 1? '金额' : '规格' }}
+            <image wx:if="{{ !isSecondUp }}" class="icon-rank" src="{{ iconDomain }}icon-down.png" lazy-load />
+            <image wx:if="{{ isSecondUp }}" class="icon-rank" src="{{ iconDomain }}icon-up.png" lazy-load />
+        </view>
+        <view class="{{ (tab == 'upload_time' || tab == 'oc.create_time' || tab == 'weight')? 'current' : '' }}" data-tab="{{ type == 0? 'upload_time' : type == 1? 'oc.create_time' : 'weight' }}" data-num="3" bindtap="changeRank">
+            {{ type == 0? '更新时间' : type == 1? '上架时间' : '重量' }}
+            <image wx:if="{{ !isThirdUp }}" class="icon-rank" src="{{ iconDomain }}icon-down.png" lazy-load />
+            <image wx:if="{{ isThirdUp }}" class="icon-rank" src="{{ iconDomain }}icon-up.png" lazy-load />
+        </view>
+        <view class="p-rl" bindtap="showSideBar"><hr class="border-filter"/>筛选<image class="icon-filter" src="{{ iconDomain }}icon-filter.png" lazy-load /></view>
+    </view>
+    <view class="tab-total">
+        共搜索到<text>{{ totalCount }}</text>条，总重量<text>{{ totalWeight }}</text>吨
+    </view>
+    <!-- 内容 -->
+    <scroll-view style="height: {{ scrollH }};" scroll-y enable-back-to-top bindscrolltolower="loadPage">
+        <view class="content">
+            <block wx:for="{{ dataList }}" wx:key="item">
+                <view class="inner-box" data-type="{{ type }}" data-goodsid="{{ type == 0? item.goods_id : item.goodsId }}" data-idtype="{{ type == 0? item.id_type : '' }}" bindtap="goDetail">
+                    <!-- ********* 左框 图片 ********* -->
+                    <!-- 现货 -->
+                    <view class="left op-flex-box" wx:if="{{ type == 0 }}">
+                        <image src="{{ item.column2 }}" mode="aspectFill" lazy-load wx:if="{{ item.has_img && item.column2 }}" />
+                        <image src="{{ imgDomain }}{{ item.product_type_code }}.png" mode="aspectFill" lazy-load wx:elif="{{ !item.has_img && item.product_type_code }}" />
+                        <image src="{{ iconDomain }}bg-noimage.png" mode="aspectFill" lazy-load wx:else />
+                    </view>
+                    <!-- 定制 -->
+                    <view class="left op-flex-box" wx:else>
+                        <image src="{{ imgDomain }}{{ item.productTypeCode }}.png" mode="aspectFill" lazy-load wx:if="{{ item.productTypeCode }}" />
+                        <image src="{{ iconDomain }}bg-noimage.png" mode="aspectFill" lazy-load wx:else />
+                    </view>
+                    <!-- ********* 右框 内容 ********* -->
+                    <!-- ****************** 现货 ****************** -->
+                    <view class="center" wx:if="{{ type == 0 }}">
+                        <!-- 第一行 -->
+                        <view class="f30 fb">
+                            <image class="tag" src="{{ iconDomain }}tag-xianhuo.png" lazy-load />
+                            <text wx:if="{{ item.producing_name }}" class="pr10">{{ item.producing_name }}</text>
+                            <text wx:if="{{ item.product_name }}">{{ item.product_name }}</text>
+                            <image class="rectangle" src="{{ iconDomain }}resource-red.png" lazy-load wx:if="{{ item.shield_status == 40 || item.shield_status == 50 }}" />
+                            <image class="rectangle" src="{{ iconDomain }}resource-yellow.png" lazy-load wx:if="{{ item.shield_status == 30 }}" />
+                            <image class="rectangle" src="{{ iconDomain }}resource-blue.png" lazy-load wx:if="{{ item.shield_status == 20 }}" />
+                            <image class="rectangle" src="{{ iconDomain }}resource-green.png" lazy-load wx:if="{{ item.shield_status == 10 }}" />
+                            <image class="square" src="{{ iconDomain }}icon-warranty.png" lazy-load wx:if="{{ item.has_book }}" />
+                            <image class="square" src="{{ iconDomain }}icon-image.png" lazy-load wx:if="{{ item.has_img }}" />
+                            <image class="square" src="{{ iconDomain }}icon-houjiesuan.png" lazy-load wx:if="{{ item.is_after_settle == 10 }}" />
+                            <image class="square" src="{{ iconDomain }}icon-credit.png" lazy-load wx:if="{{ item.business_type == 30 }}" />
+                            <image class="square" src="{{ iconDomain }}icon-bargain.png" lazy-load wx:if="{{ item.bargained_price > 0 }}" />
+                        </view>
+                        <!-- 第二行 -->
+                        <view class="spec f24">
+                            <view>{{ item.shop_sign }}</view>
+                            <view class="border-right" wx:if="{{ item.shop_sign }}"></view>
+                            <view>{{ item.spec }}</view>
+                            <view class="border-right" wx:if="{{ item.spec }}"></view>
+                            <view>{{ item.pieces }}件</view>
+                            <view class="border-right" wx:if="{{ item.pieces }}"></view>
+                            <view>{{ item.weight }}吨</view>
+                        </view>
+                        <!-- 第三行 -->
+                        <view class="spec f22 color-666">
+                            <view>
+                                <image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load wx:if="{{ item.company_level == 1 }}" />
+                                <image class="icon-supplier-v" src="{{ iconDomain }}icon-supplier-v.png" lazy-load wx:if="{{ item.company_level == 2 || item.company_level == 5 }}" />
+                                {{ (!item.is_show_provider_name && item.id_type != 2)? '已认证供应商' : item.provider_name }}
+                            </view>
+                            <view class="border-right" wx:if="{{ item.storage_place_name }}"></view>
+                            <view wx:if="{{ item.storage_place_name }}">{{ item.storage_place_name }}</view>
+                        </view>
+                        <!-- 第四行 -->
+                        <view class="spec f22 color-999">
+                            <view wx:if="{{ item.upload_time }}">
+                                {{ item.upload_time }}
+                            </view>
+                            <view class="border-right" wx:if="{{ item.id_type == 2 }}"></view>
+                            <view wx:if="{{ item.id_type == 2 }}">
+                                <view>
+                                    {{ item.link_man }} {{ item.link_phone }}
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 价格 按钮 -->
+                        <view>
+                            <view class="center fb color-red" wx:if="{{ item.price == 9999999 && item.id_type == 2 }}">
+                                <text class="f32">电议</text>
+                            </view>
+                            <view class="center fb color-red" wx:else>
+                                <text class="f22">￥</text>
+                                <text class="f32">{{ item.price }}</text>
+                            </view>
+                            <view class="btn-addcart {{ (item.position == 30 || item.shield_status >= 40 || item.isCartAdded || item.isPackAdded == 1)? 'disable' : '' }}" data-item="{{ item }}" data-type="0" catchtap="addCart">
+                                {{ item.btnAddCart }}
+                            </view>
+                        </view>
+                    </view>
+                    <!-- ****************** 定制订单 ****************** -->
+                    <view class="center" wx:if="{{ type == 1 }}">
+                        <!-- 第一行 -->
+                        <view class="f30 fb">
+                            <image class="tag" src="{{ iconDomain }}tag-dingzhi.png" lazy-load />
+                            <text>{{ item.productTypeName }}</text>
+                            <image class="icon-100" src="{{ iconDomain }}icon-100.png" lazy-load wx:if="{{ item.paymentMethod == 10 }}"/>
+                            <image class="square" src="{{ iconDomain }}icon-ding.png" lazy-load wx:if="{{ item.paymentMethod == 20 || item.paymentMethod == 30 }}" />
+                            <image class="icon-shexiao" src="{{ iconDomain }}icon-shexiao.png" lazy-load wx:if="{{ item.paymentMethod == 40 }}" />
+                            <image class="square" src="{{ iconDomain }}icon-rong.png" lazy-load wx:if="{{ item.isLoanAllowed }}" />
+                        </view>
+                        <!-- 第二行 -->
+                        <view class="spec f24">
+                            <view>{{ item.totalWeight }}吨</view>
+                            <view class="border-right" wx:if="{{ item.deliveryMonth }}"></view>
+                            <view wx:if="{{ item.deliveryMonth }}">{{ item.deliveryMonth }}前交货</view>
+                        </view>
+                        <!-- 第三行 -->
+                        <view class="spec f22 color-666">
+                            <view><image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load />{{ item.providerName }}</view>
+                            <view class="border-right"></view>
+                            <view>{{ item.deliveryAddressName }}</view>
+                        </view>
+                        <!-- 价格 按钮 -->
+                        <view>
+                            <view class="price-box center color-red">
+                                <view class="f22 fb">￥</view>
+                                <view class="f32 pr10 fb">
+                                    {{ item.minPrice? item.minPrice : item.purchasePrice }}/<text class="f24">吨 起</text>
+                                </view>
+                                <view class="f22" wx:if="{{ item.freightPrice && item.freightInvoiceType != 20 }}">
+                                    <image class="icon-freight" src="{{ iconDomain }}icon-order-freight.png" lazy-load />
+                                    ￥{{ item.freightPrice }}/吨
+                                </view>
+                            </view>
+                            <view class="btn-addcart bg-orange {{ item.isAddShoppingStatus? 'disable' : '' }}" data-item="{{ item }}" data-type="1" catchtap="addCart">
+                                {{ item.btnAddCart }}
+                            </view>
+                        </view>
+                    </view>
+                    <!-- ****************** 定制到货 ****************** -->
+                    <view class="center" wx:if="{{ type == 2 }}">
+                        <!-- 第一行 -->
+                        <view class="f30 fb">
+                            <image class="tag" src="{{ iconDomain }}tag-dingzhi.png" lazy-load />
+                            <text wx:if="{{ item.productTypeName }}" class="pr10">{{ item.productTypeName }}</text>
+                            <text wx:if="{{ item.productName }}">{{ item.productName }}</text>
+                            <image class="square" src="{{ iconDomain }}icon-ding.png" lazy-load />
+                            <image class="icon-discount" src="{{ iconDomain }}icon-discount.png" lazy-load />
+                        </view>
+                        <!-- 第二行 -->
+                        <view class="spec f24">
+                            <view>{{ item.shopSign }}</view>
+                            <view class="border-right"></view>
+                            <view>{{ item.spec }}</view>
+                            <view class="border-right"></view>
+                            <view>{{ item.pieces }}件</view>
+                            <view class="border-right"></view>
+                            <view>{{ item.weight }}吨</view>
+                        </view>
+                        <!-- 第三行 -->
+                        <view class="spec f22 color-666">
+                            <view><image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load />{{ item.buyerName }}</view>
+                            <view class="border-right"></view>
+                            <view>{{ item.storagePlaceName }}</view>
+                        </view>
+                        <!-- 价格 按钮 -->
+                        <view>
+                            <view class="center fb color-red">
+                                <text class="f22">￥</text>
+                                <text class="f32">{{ item.salePrice }}/<text class="f24">吨</text></text>
+                            </view>
+                            <view class="btn-addcart bg-orange {{ item.isAddShoppingStatus? 'disable' : '' }}" data-item="{{ item }}" data-type="2" catchtap="addCart">
+                                {{ item.btnAddCart }}
+                            </view>
+                        </view>
+                    </view>
+                    <hr wx:if="{{ index != dataList.length - 1 }}" />
+                </view>
+            </block>
+            <loadmore noMore="{{ noMore }}"></loadmore>
+        </view>
+    </scroll-view>
+    <side-bar showSideBar="{{ showSideBar }}" showInput="{{ showInput }}" inputTitle="{{ inputTitle }}" inputValue="{{ inputValue }}" bindinput="inputChange" showSmallType="{{ showSmallType }}" smallTypeData="{{ smallTypeData }}" showDeliveryMonth="{{ showDeliveryMonth }}" deliveryMonthData="{{ deliveryMonthData }}" showDeliveryPlace="{{ showDeliveryPlace }}" deliveryPlaceData="{{ deliveryPlaceData }}" showOrderNo="{{ showOrderNo }}" orderNoData="{{ orderNoData }}" showType="{{ showType }}" typeData="{{ typeData }}" showSpec="{{ showSpec }}" specData="{{ specData }}" showShopSign="{{ showShopSign }}" shopSignData="{{ shopSignData }}" showOriginWeight="{{ showOriginWeight }}" originWeightData="{{ originWeightData }}" showStorage="{{ showStorage }}" storageData="{{ storageData }}" showService="{{ showService }}" showSpecInput="{{ showSpecInput }}" showOthers="{{ showOthers }}" showProvider="{{ showProvider }}" providerData="{{ providerData }}" showPayType="{{ showPayType }}" showFunder="{{ showFunder }}" funderData="{{ funderData }}" bindconfirm="confirmSideBar" bindreset="resetSideBar"></side-bar>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

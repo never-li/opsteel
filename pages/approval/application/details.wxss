@@ -1,0 +1,120 @@
+@import '/static/css/common.wxss';
+.details-wrap {
+  width: 100%;
+  height: 100%;
+}
+.details-wrap .wrap-item {
+  position: relative;
+  background: #FFFFFF;
+  padding: 24rpx;
+  color: #333333;
+  font-size: 28rpx;
+}
+.details-wrap .wrap-item > view {
+  font-size: 26rpx;
+}
+.details-wrap .wrap-item b {
+  color: #F95355;
+}
+.details-wrap .wrap-item .virtue {
+  display: inline-block;
+  width: 140rpx;
+  height: 40rpx;
+  line-clamp: 40rpx;
+  font-size: 28rpx;
+  color: #999999;
+  margin-right: 66rpx;
+  margin-bottom: 18rpx;
+}
+.details-wrap .wrap-item .virtue.mb0 {
+  margin-bottom: 0;
+}
+.details-wrap .son-item {
+  padding: 24rpx;
+  background: #FFFFFF;
+}
+.details-wrap .son-item .item-title {
+  margin-left: 14rpx;
+}
+.details-wrap .son-item .wrap-item {
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.details-wrap .son-item .wrap-item:last-child {
+  border-bottom: none;
+}
+.details-wrap .son-item .normalClass {
+  display: block;
+}
+.details-wrap .son-item .collapse {
+  display: none;
+}
+.details-wrap .son-item .expand {
+  display: block;
+}
+.details-wrap .details-scroll {
+  height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 90rpx;
+}
+.top-line {
+  width: 100%;
+  height: 20rpx;
+  background: #FAFAFA;
+}
+.line {
+  width: 100%;
+  height: 20rpx;
+  background: #E8E8E8;
+}
+.track-wrap {
+  margin-top: 28rpx;
+}
+.track-wrap .item {
+  margin-bottom: 42rpx;
+}
+.track-wrap .item .time .p1 {
+  display: block;
+  font-size: 26rpx;
+  list-style: 26rpx;
+  height: 37rpx;
+  color: #999999;
+}
+.track-wrap .item .time .p2 {
+  display: block;
+  font-size: 20rpx;
+  color: #999999;
+  text-align: right;
+}
+.track-wrap .item .user {
+  position: relative;
+  margin-left: 80rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+.track-wrap .item .user:after {
+  position: absolute;
+  content: " ";
+  display: inline-block;
+  top: 5px;
+  left: -32rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background: #008CFF;
+  border-radius: 50%;
+}
+.track-wrap .item .user::before {
+  position: absolute;
+  content: " ";
+  display: inline-block;
+  top: 12px;
+  left: -26rpx;
+  width: 1rpx;
+  height: 92rpx;
+  background: #008CFF;
+}
+.track-wrap .item .operating {
+  margin-left: 20rpx;
+}
+.track-wrap .item:last-child .user::before {
+  width: 0rpx;
+}

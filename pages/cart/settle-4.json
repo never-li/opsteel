@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "付款确认",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

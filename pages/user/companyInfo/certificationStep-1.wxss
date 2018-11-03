@@ -1,0 +1,11 @@
+@import '/static/css/common.wxss';
+.certificate-wrap .title {
+  line-height: 110rpx;
+}
+.certificate-wrap .op-flex-box {
+  padding: 0 30rpx;
+}
+.certificate-wrap .op-flex-box image {
+  width: 52rpx;
+  height: 48rpx;
+}

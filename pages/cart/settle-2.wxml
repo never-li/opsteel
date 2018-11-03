@@ -1,0 +1,81 @@
+<view class="settle-wrap">
+    <view class="lock-wrap">
+        <view class="header">
+            <image src="{{ iconDomain }}icon-freight.png" lazy-load />
+            请填写并核对运单信息
+        </view>
+        <view class="content">
+            <view class="f30 fb lh60">付款信息</view>
+            <view class="op-flex-box f26 mb20">
+                <view>付款比例</view>
+                <view class="btn-type">
+                    <view>
+                        全额预付
+                    </view>
+                </view>
+            </view>
+            <view class="op-flex-box f26">
+                <view>付款方式</view>
+                <view class="btn-type">
+                    <view>现金</view>
+                </view>
+            </view>
+        </view>
+        <view class="content mt20">
+            <view class="f30 fb lh60">运单详情</view>
+            <view class="lh52">
+                <image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load />
+                {{ freightVo.invoiceCompanyName }}
+                <image class="tag" src="{{ iconDomain }}tag-dingdan.png" lazy-load />
+            </view>
+            <!-- 定制订单 -->
+            <view class="box">
+                <view class="inner">
+                    <view>
+                        <text>运单号</text>
+                        <text>{{ freightVo.freightBillCode }}</text>
+                    </view>
+                    <view>
+                        <text>订单号</text>
+                        <text>{{ freightVo.frameOrderCode }}</text>
+                    </view>
+                    <view>
+                        <text>起始地</text>
+                        <text>{{ freightVo.originAddress || '-' }}</text>
+                    </view>
+                    <view>
+                        <text>目的地</text>
+                        <text>{{ freightVo.destinationAddress || '-' }}</text>
+                    </view>
+                </view>
+                <view class="inner">
+                    <view>
+                        <text>运杂费结算方式</text>
+                        <text>{{ freightVo.method }}</text>
+                    </view>
+                    <view>
+                        <text>重量</text>
+                        <text>{{ freightVo.transportWeight }}吨</text>
+                    </view>
+                    <view>
+                        <text>运杂费单价</text>
+                        <text>￥{{ freightVo.freightPrice }}</text>
+                    </view>
+                    <view>
+                        <text>运杂费金额</text>
+                        <text class="color-red fb">￥{{ freightVo.freightAmount }}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="content others">
+            <view class="f30 fb lh60">其他信息</view>
+            <view class="f26 op-flex-box">
+                <view class="color-999">开票服务：</view>
+                <view class="center">本订单由 <text class="color-orange">{{ freightVo.invoiceCompanyName }}</text> 提供发票及相关服务</view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-bottom" bindtap="nextStep">去支付</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

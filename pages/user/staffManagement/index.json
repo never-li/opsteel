@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "职员管理",
+    "usingComponents": {
+        "loadmore": "../../../components/loadmore/loadmore",
+        "toast": "/components/toast/toast"
+    }
+}

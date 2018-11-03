@@ -1,0 +1,6 @@
+<view class="op-toast" wx:if="{{ isShowToast }}">
+    <view class="content">
+        <image class="icon" src="{{ icon }}" lazy-load/>
+        <view class="title">{{ title }}</view>
+    </view>
+</view>

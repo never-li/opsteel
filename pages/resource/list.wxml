@@ -1,0 +1,30 @@
+<!-- 图片上传 resource/list.wxml -->
+<view class="resource-wrap bg-white">
+    <view class="op-flex-box wrap-header">
+        <view class="search center">
+            <input class="search-input" type="text" value="{{ searchVal }}" confirm-type="search" bindinput="inputSearch" bindconfirm="comfirmSearch" placeholder="请输入钢厂名称" placeholder-style="color: #999999" focus />
+            <view class="search-clear" bindtap='clearinput' wx:if="{{ searchVal }}"><image src="{{ iconDomain }}icon-clear.png"/></view>
+        </view>
+        <view class="back" bindtap='comfirmSearch'>查询</view>
+    </view>
+    <view class="content">
+        <block wx:if="{{ filterList.length > 0 || msg }}">
+            <block wx:if="{{ filterList.length > 0 }}">
+                <view class="p-rl" wx:for="{{ filterList }}" wx:key="item" data-name="{{ item }}" bindtap="getPackCode">
+                    <view>{{ item }}</view>
+                    <hr wx:if="{{ index != filterList.length - 1 }}"/>
+                </view>
+            </block>
+            <block wx:if="{{ msg }}">
+                <view class="tc lh88">{{ msg }}</view>
+            </block>
+        </block>
+        <block wx:else>
+            <view class="p-rl" wx:for="{{ list }}" wx:key="item" data-name="{{ item }}" bindtap="getPackCode">
+                <view>{{ item }}</view>
+                <hr wx:if="{{ index != list.length - 1 }}"/>
+            </view>
+        </block>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

@@ -1,0 +1,32 @@
+@import '/static/css/common.wxss';
+.supply-wrap {
+  background: #FFFFFF;
+}
+.supply-wrap .wrap-head {
+  padding: 18rpx 24rpx;
+  background: #FAFAFA;
+  font-size: 24rpx;
+  color: #666666;
+}
+.supply-wrap .wrap-head b {
+  color: #F95355;
+}
+.supply-wrap .wrap-head .center {
+  text-align: right;
+  margin-right: 40rpx;
+  color: #008CFF;
+}
+.supply-wrap .wrap-line {
+  width: 100%;
+  height: 20rpx;
+  background: #F5F5F5;
+}
+.supply-wrap .wrap-total {
+  font-size: 26rpx;
+  padding: 20rpx 0;
+  margin: 0 24rpx;
+  color: #666666;
+}
+.supply-wrap .wrap-total .total {
+  color: #F95355;
+}

@@ -1,0 +1,15 @@
+@import 'css/public.wxss';
+.registered-wrap .registered-title {
+  margin-bottom: 17rpx;
+}
+.registered-wrap .registered-input-box {
+  margin-bottom: 80px;
+}
+.registered-wrap .registered-input-box .password {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  line-height: 90rpx;
+  height: 90rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+  color: #333333 !important;
+}

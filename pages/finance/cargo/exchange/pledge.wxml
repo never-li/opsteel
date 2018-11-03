@@ -1,0 +1,16 @@
+<view class="exchange-wrap">
+    <scroll-view  scroll-y style="height: {{scrollH}};">
+        <view class="wrap-head op-flex-box">
+            <view class="center">共<b>4</b>条，总重量<b>8.980</b>吨</view>
+            <view>筛选</view>
+        </view>
+        <select selectData ="{{selectData}}" bindSelect="selectComponents"></select>
+        <view class="wrap-line"></view>
+        <view class="wrap-total op-flex-box">
+            <text class="center">选择货物总货值</text>
+            <text class="total">7,000.00</text>
+        </view>
+        <view class="wrap-line"></view>
+    </scroll-view>
+    <view class="btn-bottom" bindtap ='nextStep'>下一步</view>
+</view>

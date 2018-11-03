@@ -1,0 +1,36 @@
+@import '/static/css/common.wxss';
+.settle-wrap {
+  height: 100%;
+  overflow: hidden;
+}
+.settle-wrap .lock-wrap {
+  position: relative;
+  height: calc(100% - 90rpx);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.settle-wrap .info {
+  background: #FFFFFF !important;
+  margin-top: 20rpx;
+}
+.settle-wrap .info > view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  line-height: 88rpx;
+  padding: 0 20rpx;
+}
+.settle-wrap .info > view .left {
+  justify-content: flex-start;
+}
+.settle-wrap .info > view .center {
+  flex: 1;
+}
+.settle-wrap .info > view .right {
+  justify-content: flex-end;
+}
+.settle-wrap .info > view > text:first-child {
+  color: #999999 !important;
+}

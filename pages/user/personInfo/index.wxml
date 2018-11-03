@@ -1,0 +1,49 @@
+<view class="personinfo-wrap bg-white">
+    <view class="content">
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">用户名</view>
+            <view class="center right tr pr20">{{ userInfo.username }}</view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">手机号</view>
+            <view class="center right tr pr20" data-mobile="{{ userInfo.mobile }}" bindtap="goChangeMobile">
+                {{ userInfo.mobile }}
+                <image src="{{ editIcon }}" lazy-load />
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">姓名</view>
+            <view class="center right tr pr20" bindtap="showMask">
+                {{ userInfo.nickname || '' }}
+                <image src="{{ editIcon }}" lazy-load />
+            </view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">所属公司</view>
+            <view class="center right tr pr20">{{ userInfo.companyName }}</view>
+            <hr />
+        </view>
+        <view class="op-flex-box lh90">
+            <view class="pl20pr20 color-999">角色</view>
+            <view class="center right tr pr20">{{ userInfo.userRole[0] || '未设置' }}</view>
+            <hr />
+        </view>
+    </view>
+    <!-- 弹出框 -->
+	<view class="popup-mask {{ showMask? 'show' : '' }}"></view>
+	<view class="popup-content {{ showMask? 'show' : '' }}">
+		<view class="content">
+			<view>
+                <input type="text" placeholder="请输入新姓名" placeholder-style="color: #999;" value="{{ linkmanValue }}" bindinput='linkmanInput' />
+            </view>
+		</view>
+		<view class="button-group op-flex-box">
+			<view class="gray op-active" bindtap="closeMask">取消</view>
+			<view class="green op-active" bindtap="updateNickname">保存</view>
+		</view>
+    </view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

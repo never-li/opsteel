@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "钢贸商城",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

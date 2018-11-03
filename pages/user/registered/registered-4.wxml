@@ -1,0 +1,9 @@
+<view class="registered-wrap bg-white">
+    <view class="registered-icon">
+         <image class="icon-center" src="{{ successIcon }}"></image>
+         <view class="registered-msg">恭喜您！注册成功</view>
+    </view>
+    <view class="btn-blue" bindtap="goAuth">去认证</view>
+    <view class="tc lh90 color-blue f32 pt20" bindtap="backHome">返回首页</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

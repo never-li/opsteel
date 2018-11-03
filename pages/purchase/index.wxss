@@ -1,0 +1,116 @@
+@import '/static/css/common.wxss';
+.purchase-wrap .purchase-time {
+  padding: 0 24rpx;
+}
+.purchase-wrap .purchase-time .date {
+  font-size: 26rpx;
+  line-height: 37rpx;
+  color: #333333;
+}
+.purchase-wrap .analysis-wrap .item {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 20rpx 0 0 20rpx;
+}
+.purchase-wrap .analysis-wrap .item .wrap-titile {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 40rpx;
+  margin-bottom: 30rpx;
+  font-weight: 400;
+}
+.purchase-wrap .analysis-wrap .item .wrap-virtue {
+  display: inline-block;
+}
+.purchase-wrap .analysis-wrap .item .wrap-virtue .titile-virtue {
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 30rpx;
+  margin-bottom: 10rpx;
+}
+.purchase-wrap .analysis-wrap .item .wrap-virtue .titile-virtue image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+  vertical-align: top;
+}
+.purchase-wrap .analysis-wrap .item .wrap-virtue .virtue {
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+.purchase-wrap .analysis-wrap .item .wrap-round {
+  display: inline-block;
+  vertical-align: top;
+  width: 120rpx;
+  height: 120rpx;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+}
+.purchase-wrap .analysis-wrap .item .wrap-round .cir {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.purchase-wrap .analysis-wrap .item .wrap-round text {
+  display: block;
+  margin-top: -85rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.purchase-wrap .analysis-wrap .item:first-child .wrap-virtue {
+  padding-left: 20rpx;
+}
+.purchase-wrap .analysis-wrap .item:first-child .wrap-virtue .virtue {
+  color: #F95355;
+}
+.purchase-wrap .analysis-wrap .item:nth-child(2n):after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2rpx;
+  height: 258rpx;
+  margin-top: -129rpx;
+  background: #E8E8E8;
+}
+.purchase-wrap .line {
+  width: 100%;
+  height: 20rpx;
+  background: #FAFAFA;
+}
+.purchase-wrap .approval-wrap > .op-flex-box {
+  position: relative;
+  padding: 0 20rpx;
+}
+.purchase-wrap .approval-wrap > .op-flex-box hr {
+  width: calc(100% - 76rpx);
+  left: 76rpx;
+}
+.purchase-wrap .approval-wrap .icon-image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+.purchase-wrap .approval-wrap .title {
+  font-size: 30rpx;
+  color: #333333;
+}
+.purchase-wrap .approval-wrap .number {
+  line-height: 16px;
+  padding: 3rpx 10rpx;
+  font-size: 26rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  margin-right: 20rpx;
+  color: #666666;
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "确认补货信息",
+    "usingComponents": {
+        "paySix": "../../../../components/passwordBox/passwordBox"
+    }
+}

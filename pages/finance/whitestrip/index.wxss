@@ -1,0 +1,77 @@
+@import '/static/css/common.wxss';
+.whitestrip-wrap .wrap-tab {
+  height: 85rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.whitestrip-wrap .wrap-tab .tab {
+  font-size: 32rpx;
+  line-height: 64rpx;
+  color: #333333;
+  text-align: center;
+}
+.whitestrip-wrap .wrap-tab .tab.current {
+  position: relative;
+  color: #008CFF;
+}
+.whitestrip-wrap .wrap-tab .tab.current::after {
+  content: '';
+  position: absolute;
+  bottom: -10rpx;
+  left: 10%;
+  width: 80%;
+  border: 3rpx solid #008CFF;
+}
+.whitestrip-wrap .wrap-filter {
+  height: 68rpx;
+  background: #FAFAFA;
+  padding: 0 24rpx;
+}
+.whitestrip-wrap .wrap-filter text {
+  color: #666666;
+  font-size: 24rpx;
+  padding: 17rpx 0;
+}
+.whitestrip-wrap .wrap-item {
+  background: #FFFFFF;
+  padding: 0 24rpx;
+}
+.whitestrip-wrap .wrap-item .item {
+  border-bottom: 2rpx solid #E8E8E8;
+  padding: 26rpx 0;
+}
+.whitestrip-wrap .wrap-item .item .order-number {
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #333333;
+  margin-bottom: 7rpx;
+}
+.whitestrip-wrap .wrap-item .item .order-number .status {
+  color: #FF7700;
+}
+.whitestrip-wrap .wrap-item .item .order-detail {
+  font-size: 0;
+}
+.whitestrip-wrap .wrap-item .item .order-detail > view {
+  width: 50%;
+  display: inline-block;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #666666;
+  padding: 6rpx 0;
+}
+.whitestrip-wrap .wrap-item .item b {
+  color: #F95355;
+}
+.whitestrip-wrap .wrap-item .item:last-child {
+  border-bottom: none;
+}
+.whitestrip-wrap .repayment-bnt {
+  height: 90rpx;
+  background: #008CFF;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  text-align: center;
+  padding: 24rpx 0;
+  box-sizing: border-box;
+}

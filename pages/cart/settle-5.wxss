@@ -1,0 +1,18 @@
+@import '/static/css/common.wxss';
+.settle-wrap {
+  height: 100%;
+  padding-top: 140rpx;
+  box-sizing: border-box;
+}
+.settle-wrap .settle-icon {
+  text-align: center;
+}
+.settle-wrap .settle-icon image {
+  width: 130rpx;
+  height: 110rpx;
+  margin-bottom: 53rpx;
+}
+.settle-wrap .settle-icon .settle-msg {
+  line-height: 50rpx;
+  margin-bottom: 115rpx;
+}

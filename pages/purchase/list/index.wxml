@@ -1,0 +1,146 @@
+<view class="purchase-list-wrap">
+    <block wx:if="{{type == 4}}">
+        <view class="purchase-header">
+            <view class="op-flex-box  results bg-white">
+                <view class="center item">
+                    <view class="item-t">全部采购量</view>
+                    <view class="item-c"><b>{{headCount.tab1Weight|| 0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">本月采购量</view>
+                    <view class="item-c"><b>{{headCount.tab2Weight|| 0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">本月实收量</view>
+                    <view class="item-c"><b>{{headCount.tab3Weight|| 0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">本月实收量</view>
+                    <view class="item-c"><b>{{headCount.tab4Weight|| 0}}</b>吨</view>
+                </view>
+            </view>
+            <view class="op-flex-box statistics">
+                <view class="center">
+                    共<b>{{dataListAll.pageBean.totalCount ||0}}</b>条，总重量<b>{{dataListAll.pageBean.totalWeight || 0}}</b>吨
+                </view>
+                <text bindtap="showSideBar">筛选</text>
+            </view>
+        </view>
+        <scroll-view scroll-y style="height: {{scrollH}};" enable-back-to-top bindscrolltolower="loadPage">
+            <view class="application-wrap">
+                <block wx:for="{{dataList}}" wx:key="item">
+                    <view class="wrap-item" bindtap='details'>
+                        <view><text class="virtue">采购订单号</text>{{item.frameOrderCode}}
+                        <block wx:if="{{item.orderType==20 || item.orderType==30}}">
+                            <image class="orders-icon" src="{{ iconDomain}}tag-dingzhi.png" lazy-load="true"/>
+                        </block>
+                        <block wx:if="{{item.orderType==10}}">
+                            <image class="orders-icon" src="{{ iconDomain}}tag-xianhuo.png" lazy-load="true"/>
+                        </block>
+                        </view>
+                        <view><text class="virtue">供应商</text>{{item.providerName}}</view>
+                        <view>
+                            <text class="virtue">重量/金额</text>{{item.totalWeight}}吨 /<b> ¥ {{item.totalAmount}}</b>
+                        </view>
+                        <view><text class="virtue">业务状态</text>{{item.orderStatus}}</view>
+                        <view wx:if='{{item.orderStatus == "已结案"}}' class="orders-finish">
+                            <image src="{{ iconDomain}}finish.png" />
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </block>
+            </view>
+            <loadmore noMore="{{ noMore }}"></loadmore>
+        </scroll-view>
+    </block>
+    <block wx:if="{{type == 5}}">
+        <view class="purchase-header">
+            <view class="op-flex-box  results bg-white">
+                <view class="center item">
+                    <view class="item-t">全部销售量</view>
+                    <view class="item-c"><b>{{headCount.tab1Weight ||0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">本月销售量</view>
+                    <view class="item-c"><b>{{headCount.tab2Weight ||0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">本月实发量</view>
+                    <view class="item-c"><b>{{headCount.tab3Weight ||0}}</b>吨</view>
+                </view>
+                <view class="center item">
+                    <view class="item-t">累计欠发量</view>
+                    <view class="item-c"><b>{{headCount.tab4Weight ||0}}</b>吨</view>
+                </view>
+            </view>
+            <view class="op-flex-box statistics">
+                <view class="center">共<b>{{dataListAll.pageBean.totalCount ||0}}</b>条，总重量<b>{{dataListAll.pageBean.totalWeight ||0}}</b>吨</view>
+                <text bindtap="showSideBar">筛选</text>
+            </view>
+        </view>
+        <scroll-view scroll-y style="height: {{scrollH}};" enable-back-to-top bindscrolltolower="loadPage">
+            <view class="application-wrap">
+                <block wx:for="{{dataList}}" wx:key="item">
+                    <view class="wrap-item" bindtap='details'>
+                        <view><text class="virtue">销售订单号</text>{{item.frameOrderCode}}
+                        <block wx:if="{{item.orderType==20 || item.orderType==30}}">
+                            <image class="orders-icon" src="{{ iconDomain}}tag-dingzhi.png" lazy-load="true"/>
+                        </block>
+                        <block wx:if="{{item.orderType==10}}">
+                            <image class="orders-icon" src="{{ iconDomain}}tag-xianhuo.png" lazy-load="true"/>
+                        </block>
+                        </view>
+                        <view><text class="virtue">客户</text>{{item.buyerName}}</view>
+                        <view><text class="virtue">重量/金额</text>{{item.totalWeight}}吨／<b>¥ {{item.totalAmount}}</b></view>
+                        <view><text class="virtue">业务状态</text>{{item.orderStatus}}</view>
+                        <view wx:if='{{item.orderStatus == "已结案"}}' class="orders-finish">
+                            <image src="{{ iconDomain}}finish.png" />
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </block>
+            </view>
+            <loadmore noMore="{{ noMore }}"></loadmore>
+        </scroll-view>
+    </block>
+</view>
+<toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+<side-bar   showSideBar="{{ showSideBar }}" 
+            inputTitle="{{ inputTitle }}" 
+            showInput="{{ showInput }} " 
+            providerData="{{ providerData }}" 
+            typeData="{{typeData}}"
+            shopSignData='{{shopSignData}}'
+            originData='{{originData}}'
+            payTypeData='{{payTypeData}}'
+            storageDataNoWeight='{{storageDataNoWeight}}'
+            showDate="{{ showDate }}" 
+            showStorageNoWeight="{{ showStorageNoWeight }}" 
+            dateTitle="{{ dateTitle }}" 
+            showWarehouse="{{ showWarehouse }}" 
+            showSmallType="{{ showSmallType }}" 
+            showType="{{ showType }}" 
+            showSpec="{{ showSpec }}" 
+            showShopSign="{{ showShopSign }}" 
+            showOrigin="{{ showOrigin }}" 
+            showStorage="{{ showStorage }}" 
+            showService="{{ showService }}" 
+            showSpecInput="{{ showSpecInput }}" 
+            showOthers="{{ showOthers }}" 
+            showProviderName="{{ showProviderName }}" 
+            showDeliveryMonth="{{ showDeliveryMonth }}" 
+            showDeliveryPlace="{{ showDeliveryPlace }}" 
+            showOrderNo="{{ showOrderNo }}" 
+            showProvider="{{ showProvider }}" 
+            showCustomer="{{ showCustomer }}" 
+            customerData="{{customerData}}"
+            showPayType="{{ showPayType }}" 
+            showFunder="{{ showFunder }}" 
+            showStatus="{{ showStatus }}" 
+            showOrderStatus="{{ showOrderStatus }}" 
+            showOrderType="{{ showOrderType }}" 
+            showPeriod="{{ showPeriod }}" 
+            showFundFlow="{{ showFundFlow }}" 
+            showFundUse="{{ showFundUse }}" 
+            bindconfirm="confirmSideBar">
+</side-bar>

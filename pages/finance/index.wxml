@@ -1,0 +1,53 @@
+<view class="finance-wrap">
+    <view class="wrap-head" style="background: url({{iconDomain}}finance-background.png) center bottom  no-repeat #008cff ; background-size: 100% auto;">
+        <view class="head-data">
+            <text class="txt">剩余贷款额度(元)</text>
+            <text class="num">968,000.00</text>
+        </view>
+        <view class="head-item op-flex-box">
+            <view class="item center">
+                <view class="txt">货押额度(元)</view>
+                <view class="num">250,000.00</view>
+            </view>
+            <view class="item center">
+                <view class="txt">白条额度(元)</view>
+                <view class="num">250,000.00</view>
+            </view>
+        </view>
+    </view>
+    <view class="wrap-item">
+        <view class="item op-flex-box border-bottom" bindtap='cargoDetails'>
+            <view class="name center">我的货押</view>
+            <view class='msg'>
+                <block wx:if="{{cargoStatus == 1}}">
+                    <view class="using">
+                        <text>已质押货物：4件</text>
+                        <text>已用额度：50,000.00</text>
+                    </view>
+                </block>
+                <view class="unused" wx:if="{{cargoStatus == 2}}">
+                    未审核
+                </view>
+                <view class="unused"  wx:if="{{cargoStatus == 3}}">
+                    审核中
+                </view>
+                <view class="unused"  wx:if="{{cargoStatus == 4}}">
+                    审核不通过：企业资料认证有误
+                </view>
+            </view>
+            <view class="op-right-arrow gray"></view>
+        </view>
+        <view class="item op-flex-box" bindtap='whitestrip'>
+            <view class="name center">我的白条</view>
+            <view class='msg'>
+                <view class="using" >
+                    <text>已用额度：50,000.00</text>
+                </view>
+            </view>
+            <view class="op-right-arrow gray"></view>
+        </view>
+    </view>
+    <view class="wrap-add">
+        <image  src="{{iconDomain}}banner-finance.png" />
+    </view>
+</view>

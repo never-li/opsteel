@@ -1,0 +1,8 @@
+<view class="certificate-wrap bg-white">
+    <view class="certificate-icon">
+        <image src="{{ succIcon }}" lazy-load></image>
+        <view class="certificate-msg f36 color-666">恭喜您！提交成功</view>
+    </view>
+    <view class="btn-blue" bindtap="backAccount">返回我的帐号</view>
+    <view class="tc lh90 color-blue f32 pt20" bindtap="backHome">返回首页</view>
+</view>

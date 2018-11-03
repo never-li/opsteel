@@ -1,0 +1,76 @@
+<view class="confirmMessage-wrap bg-white">
+    <scroll-view  scroll-y style="height: {{scrollH}};">
+        <view class="wrap-title border-bottom">
+                <image src="{{iconDomain}}detail-zhiya.png" />
+                <text>我要质押货物明细</text>
+        </view>
+        <view class="wrap-box">
+            <view class="item">
+                <view><text>捆包号</text>KB001-0001</view>
+                <view><text>评估货值</text><span>¥</span><b>5000.00</b></view>
+                <view><text>品种</text>冷轧不锈钢卷</view>
+                <view><text>牌号</text>SPCC</view>
+                <view><text>产地</text>柳钢</view>
+                <view><text>规格</text>1.0*1250*C</view>
+                <view><text>存放地</text>宝钢8号</view>
+                <view><text>重量</text>1.395吨</view>
+            </view>
+            <view class="item">
+                <view><text>捆包号</text>KB001-0001</view>
+                <view><text>评估货值</text><span>¥</span><b>5000.00</b></view>
+                <view><text>品种</text>冷轧不锈钢卷</view>
+                <view><text>牌号</text>SPCC</view>
+                <view><text>产地</text>柳钢</view>
+                <view><text>规格</text>1.0*1250*C</view>
+                <view><text>存放地</text>宝钢8号库</view>
+                <view><text>重量</text>1.395吨</view>
+            </view>
+        </view>
+        <view class="wrap-total">共<b>4</b>件，<b>12.123</b>吨，<b>49,900.00</b>元</view>
+        <view class="wrap-line"></view>
+        <view class="wrap-title border-bottom">
+                <image src="{{iconDomain}}detail-jieya.png" />
+                <text>我要解押货物明细</text>
+        </view>
+        <view class="wrap-box">
+            <view class="item">
+                <view><text>捆包号</text>KB001-0001</view>
+                <view><text>评估货值</text><span>¥</span><b>5000.00</b></view>
+                <view><text>品种</text>冷轧不锈钢卷</view>
+                <view><text>牌号</text>SPCC</view>
+                <view><text>产地</text>柳钢</view>
+                <view><text>规格</text>1.0*1250*C</view>
+                <view><text>存放地</text>宝钢8号库</view>
+                <view><text>重量</text>1.395吨</view>
+            </view>
+            <view class="item">
+                <view><text>捆包号</text>KB001-0001</view>
+                <view><text>评估货值</text><span>¥</span><b>5000.00</b></view>
+                <view><text>品种</text>冷轧不锈钢卷</view>
+                <view><text>牌号</text>SPCC</view>
+                <view><text>产地</text>柳钢</view>
+                <view><text>规格</text>1.0*1250*C</view>
+                <view><text>存放地</text>宝钢8号库</view>
+                <view><text>重量</text>1.395吨</view>
+            </view>
+        </view>
+        <view class="wrap-total">共<b>4</b>件，<b>12.123</b>吨，<b>49,900.00</b>元</view>
+        <view class="wrap-line"></view>
+    </scroll-view>
+    <view class='btn-bottom' bindtap="makeSure">确定换货</view>
+    <!-- 弹出 -->
+    <paySix 
+        bindvalueSix="valueSix" 
+        inputShow = "{{inputShow}}"
+        input_value="{{inputData.input_value}}" 
+        value_length="{{inputData.value_length}}" 
+        isNext="{{inputData.isNext}}" 
+        get_focus="{{inputData.get_focus}}" 
+        focus_class="{{inputData.focus_class}}" 
+        value_num="{{inputData.value_num}}"
+        height="{{inputData.height}}" 
+        width="{{inputData.width}}" 
+        see="{{inputData.see}}" 
+        interval="{{inputData.interval}}">
+    </paySix>
+</view>

@@ -1,0 +1,37 @@
+<view class="record-wrap bg-white">
+    <view class="wrap-item">
+        <view class="title op-flex-box">
+            <text class="name">捆包号</text>
+            <text class="num">KB001-0001</text>
+            <image class="icon" src="{{iconDomain}}icon-jieya.png"/>
+            <text class="time center">2018-04-12</text>
+        </view>
+        <view class="content border-bottom">
+            <view class="item">
+                <text class="name">品种</text>
+                <text class="value">冷轧不锈钢卷</text>
+            </view>
+            <view class="item">
+                <text class="name">牌号</text>
+                <text class="value">SPCC</text>
+            </view>
+            <view class="item">
+                <text class="name">产地</text>
+                <text class="value">柳钢</text>
+            </view>
+            <view class="item">
+                <text class="name">规格</text>
+                <text class="value">1.0*1250*C</text>
+            </view>
+            <view class="item">
+                <text class="name">存放地</text>
+                <text class="value">宝钢8号库</text>
+            </view>
+            <view class="item"> 
+                <text class="name">重量</text>
+                <text class="value">1.395吨</text>
+            </view>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,104 @@
+@import '/static/css/common.wxss';
+.confirmMessage-wrap .wrap-title {
+  padding: 24rpx 0;
+  margin-left: 24rpx;
+  margin-bottom: 26rpx;
+}
+.confirmMessage-wrap .wrap-title image {
+  width: 38rpx;
+  height: 36rpx;
+}
+.confirmMessage-wrap .wrap-title text {
+  line-height: 37rpx;
+  padding-left: 16rpx;
+}
+.confirmMessage-wrap .wrap-box {
+  margin-left: 24rpx;
+}
+.confirmMessage-wrap .wrap-box .item {
+  padding-bottom: 13rpx;
+  margin-bottom: 26rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.confirmMessage-wrap .wrap-box .item > view {
+  width: 50%;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 33rpx;
+  margin-bottom: 13rpx;
+}
+.confirmMessage-wrap .wrap-box .item > view text {
+  display: inline-block;
+  width: 96rpx;
+  color: #999999;
+  margin-right: 14rpx;
+}
+.confirmMessage-wrap .wrap-box .item > view span {
+  font-size: 20rpx;
+  color: #F95355;
+}
+.confirmMessage-wrap .wrap-box .item > view b {
+  color: #F95355;
+}
+.confirmMessage-wrap .wrap-total {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: colorGray;
+  text-align: right;
+  padding: 8rpx 24rpx 24rpx;
+}
+.confirmMessage-wrap .wrap-total b {
+  color: #F95355;
+}
+.confirmMessage-wrap .wrap-line {
+  width: 100%;
+  height: 20rpx;
+  background: #F5F5F5;
+}
+.confirmMessage-wrap .popup-content {
+  width: 690rpx;
+  top: 20%;
+}
+.confirmMessage-wrap .popup-content .content {
+  padding: 0;
+}
+.confirmMessage-wrap .popup-content .content .back {
+  position: absolute;
+  top: 21rpx;
+  left: 23rpx;
+  width: 42rpx;
+  height: 42rpx;
+  padding: 10rpx;
+}
+.confirmMessage-wrap .popup-content .content .back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 31rpx;
+  width: 2rpx;
+  height: 42rpx;
+  transform: rotate(-45deg);
+  background: #999999;
+}
+.confirmMessage-wrap .popup-content .content .back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 31rpx;
+  width: 2rpx;
+  height: 42rpx;
+  transform: rotate(45deg);
+  background: #999999;
+}
+.confirmMessage-wrap .popup-content .content .title {
+  margin-top: 30rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #030303;
+  line-height: 48rpx;
+  letter-spacing: -0.09rpx;
+  padding-bottom: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}

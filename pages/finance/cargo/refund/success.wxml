@@ -1,0 +1,14 @@
+<view class="approval-success-wrap">
+    <image  src="{{iconDomain}}icon-success.png" lazy-load/>
+    <text class="msg">还款成功</text>
+    <view class="wrap">
+        <view class="wrap-t">已同时解押<b>10</b>个资源(捆包号)：</view>
+        <view class="wrap-c">
+            <view wx:for="{{[1,2,3,4,5,6]}}" wx:key="item">
+                <text>K2018051601、</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn-blue" bindtap="returnHome">返回首页</view>
+    <view class="back" bindtap="returnRecord" data-id="1" data-title="还款记录">查看还款记录</view>
+</view>

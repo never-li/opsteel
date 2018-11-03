@@ -1,0 +1,48 @@
+@import '/static/css/common.wxss';
+.approval-success-wrap image {
+  display: block;
+  width: 130rpx;
+  height: 110rpx;
+  margin: 140rpx auto 53rpx auto ;
+}
+.approval-success-wrap .msg {
+  display: block;
+  font-size: 36rpx;
+  color: #666666;
+  text-align: center;
+  line-height: 50rpx;
+  margin-bottom: 44rpx;
+}
+.approval-success-wrap .back {
+  display: block;
+  text-align: center;
+  font-size: 32rpx;
+  color: #008CFF;
+  margin-top: 45rpx;
+}
+.approval-success-wrap .wrap {
+  padding: 0 60rpx;
+}
+.approval-success-wrap .wrap .wrap-t {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 40rpx;
+}
+.approval-success-wrap .wrap .wrap-t b {
+  color: #F95355;
+}
+.approval-success-wrap .wrap .wrap-c {
+  font-size: 0;
+  margin-top: 14rpx;
+  margin-bottom: 50rpx;
+}
+.approval-success-wrap .wrap .wrap-c > view {
+  display: inline-block;
+  line-height: 40rpx;
+}
+.approval-success-wrap .wrap .wrap-c text {
+  font-size: 28rpx;
+  color: #333333;
+  display: inline-block;
+  line-height: 40rpx;
+}

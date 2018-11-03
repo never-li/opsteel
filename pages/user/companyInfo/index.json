@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "公司信息",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

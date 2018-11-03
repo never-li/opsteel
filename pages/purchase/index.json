@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "采购分析",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

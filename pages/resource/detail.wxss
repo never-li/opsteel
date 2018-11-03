@@ -1,0 +1,201 @@
+@import '/static/css/common.wxss';
+.mall-detail-wrap {
+  font-size: 26rpx !important;
+  height: 100%;
+  overflow: hidden;
+}
+.mall-detail-wrap .lock-wrap {
+  position: relative;
+  height: calc(100% - 90rpx);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.mall-detail-wrap .swiper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  color: #666666 !important;
+  background: #fafafa;
+}
+.mall-detail-wrap .swiper .left {
+  justify-content: flex-start;
+}
+.mall-detail-wrap .swiper .center {
+  flex: 1;
+}
+.mall-detail-wrap .swiper .right {
+  justify-content: flex-end;
+}
+.mall-detail-wrap .swiper .swiper-item {
+  text-align: center;
+  width: 220rpx;
+}
+.mall-detail-wrap .swiper .swiper-item .img {
+  position: relative;
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 166rpx;
+  background: #f2f2f2;
+}
+.mall-detail-wrap .swiper .swiper-item .img image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+.mall-detail-wrap .swiper .swiper-item .img .default {
+  width: 64rpx;
+  height: 64rpx;
+}
+.mall-detail-wrap .swiper .swiper-item .img view {
+  line-height: 52rpx;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 52rpx;
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.3);
+}
+.mall-detail-wrap .pro-intro {
+  background: #FFFFFF !important;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.mall-detail-wrap .pro-intro .color-red {
+  line-height: 80rpx;
+  padding: 0 20rpx;
+}
+.mall-detail-wrap .pro-intro .color-red .tag {
+  font-size: 20rpx !important;
+  text-align: center;
+  margin-left: 20rpx;
+  display: inline-block;
+  width: 90rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  background: rgba(249, 83, 85, 0.05);
+  border-radius: 14rpx;
+}
+.mall-detail-wrap .pro-intro .pro-title {
+  padding: 0 20rpx;
+}
+.mall-detail-wrap .pro-intro .pro-title .border-right {
+  display: inline-block;
+  height: 24rpx;
+  margin: 0 10rpx;
+}
+.mall-detail-wrap .pro-intro .pro-title .tag-xianhuo {
+  width: 80rpx;
+  height: 32rpx;
+}
+.mall-detail-wrap .pro-intro .pro-title .tag-daohuo {
+  width: 120rpx;
+  height: 36rpx;
+}
+.mall-detail-wrap .info {
+  position: relative;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mall-detail-wrap .info .left {
+  justify-content: flex-start;
+}
+.mall-detail-wrap .info .center {
+  flex: 1;
+}
+.mall-detail-wrap .info .right {
+  justify-content: flex-end;
+}
+.mall-detail-wrap .info .left {
+  color: #999999 !important;
+  display: inline-block;
+  width: 200rpx;
+}
+.mall-detail-wrap .info .image-group > view {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+.mall-detail-wrap .info .image-group image {
+  margin: -6rpx 5rpx 0;
+}
+.mall-detail-wrap .info .rectangle {
+  width: 33rpx;
+  height: 40rpx;
+}
+.mall-detail-wrap .info .square {
+  width: 32rpx;
+  height: 32rpx;
+}
+.mall-detail-wrap .info .icon-v {
+  width: 34rpx;
+  height: 38rpx;
+}
+.mall-detail-wrap .info .icon-supplier-v {
+  width: 34rpx;
+  height: 28rpx;
+}
+.mall-detail-wrap .pro-detail .dt-title {
+  position: relative;
+  text-align: center;
+  line-height: 80rpx;
+}
+.mall-detail-wrap .pro-detail .dt-title hr {
+  background: #999999;
+  width: 120rpx;
+  bottom: 51%;
+}
+.mall-detail-wrap .pro-detail .dt-title hr.left {
+  left: 180rpx;
+}
+.mall-detail-wrap .pro-detail .dt-title hr.right {
+  left: auto;
+  right: 180rpx;
+}
+.mall-detail-wrap .btn-group > .left {
+  font-size: 26rpx !important;
+  color: #333333 !important;
+  border-color: transparent;
+  border-top-color: #E8E8E8;
+  flex: 2;
+}
+.mall-detail-wrap .btn-group > .left .input-box {
+  font-size: 30rpx !important;
+  border-radius: 4rpx;
+  width: 240rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.mall-detail-wrap .btn-group > .left .input-box .input {
+  display: inline-block;
+  flex: 1;
+  height: 60rpx;
+}
+.mall-detail-wrap .btn-group > .left .input-box .input.default {
+  background: #f5f5f5;
+}
+.mall-detail-wrap .btn-group > .left .input-box .input.disable {
+  background: #fbfbfb;
+}
+.mall-detail-wrap .btn-group > .left .input-box input.input {
+  flex: 2;
+  background: #f5f5f5;
+  margin: 0 5rpx;
+}
+.mall-detail-wrap .btn-group > .left .input-box image {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+}
+.mall-detail-wrap .btn-group > .right {
+  font-size: 32rpx !important;
+  border-color: #F95355;
+  background: #F95355;
+}

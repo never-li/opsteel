@@ -1,0 +1,37 @@
+@import 'css/public.wxss';
+.registered-wrap .registered-title {
+  margin-bottom: 17rpx;
+}
+.registered-wrap .registered-input-code {
+  margin-top: 52px;
+  margin-bottom: 80px;
+}
+.registered-wrap .registered-input-code .code {
+  width: 630rpx;
+  height: 90rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 38rpx;
+  color: #333333;
+}
+.registered-wrap .verification-code {
+  text-align: center;
+}
+.registered-wrap .verification-code .code-bnt-msg {
+  margin-top: 43rpx;
+  color: #008CFF;
+  font-size: 32rpx;
+  line-height: 45rpx;
+}
+.registered-wrap .verification-code .code-txt-msg {
+  margin-top: 52rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.registered-wrap .verification-code .hide {
+  display: none;
+}
+.registered-wrap .verification-code .show {
+  display: block;
+}

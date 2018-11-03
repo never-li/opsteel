@@ -1,0 +1,18 @@
+@import '/static/css/common.wxss';
+.certificate-wrap {
+  height: 100%;
+  padding-top: 140rpx;
+  box-sizing: border-box;
+}
+.certificate-wrap .certificate-icon {
+  text-align: center;
+}
+.certificate-wrap .certificate-icon image {
+  width: 130rpx;
+  height: 110rpx;
+  margin-bottom: 53rpx;
+}
+.certificate-wrap .certificate-icon .certificate-msg {
+  line-height: 50rpx;
+  margin-bottom: 115rpx;
+}

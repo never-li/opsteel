@@ -1,0 +1,11 @@
+@import '/static/css/common.wxss';
+.companyinfo-wrap {
+  height: 100%;
+}
+.companyinfo-wrap .content > .op-flex-box {
+  position: relative;
+  box-sizing: border-box;
+}
+.companyinfo-wrap .content > .op-flex-box input {
+  height: 90rpx;
+}

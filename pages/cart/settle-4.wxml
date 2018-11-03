@@ -1,0 +1,61 @@
+<view class="settle-wrap">
+    <view class="lock-wrap">
+        <view class="info">
+            <view>
+                <text>件数</text>
+                <text>{{ type == 1? orderObj.totalPieces : type == 2? goodsObj.totalPieces : xianhuoObj.totalPieces }}件</text>
+                <hr/>
+            </view>
+            <view>
+                <text>重量</text>
+                <text>{{ type == 1? orderObj.totalWeight : type == 2? goodsObj.totalWeight : xianhuoObj.totalWeight }}吨</text>
+                <hr/>
+            </view>
+            <view>
+                <text>货款金额</text>
+                <text>￥{{ type == 1? orderObj.totalGoodsAmount : type == 2? goodsObj.totalGoodsAmount : xianhuoObj.totalGoodsAmount }}</text>
+                <hr/>
+            </view>
+            <!-- 订单 有运费 -->
+            <view wx:if="{{ freightAmount }}">
+                <text>运杂费金额</text>
+                <text>￥{{ freightAmount }}</text>
+                <hr/>
+            </view>
+            <!-- 到货 -->
+            <view wx:if="{{ settleType == 30 }}">
+                <text>定金使用金额</text>
+                <text>-￥{{ goodsObj.totalFreezeAmount }}</text>
+                <hr/>
+            </view>
+            <!-- 到货 -->
+            <view wx:if="{{ settleType == 30 }}">
+                <text>利息</text>
+                <text>￥{{ goodsObj.totalInterest }}</text>
+                <hr/>
+            </view>
+            <view>
+                <text>银票贴息</text>
+                <text>￥0.00</text>
+            </view>
+        </view>
+        <view class="info">
+            <!-- <view>
+                <text>余款支付金额</text>
+                <text>￥{{ totalAmount }}</text>
+                <hr/>
+            </view>
+            <view>
+                <text>白条支付金额</text>
+                <text>￥0.00</text>
+                <hr/>
+            </view> -->
+            <view>
+                <text>本次应付</text>
+                <text class="f36 fb color-red">￥{{ totalAmount }}</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn-bottom" bindtap="goPay">确认付款</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

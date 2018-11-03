@@ -1,0 +1,44 @@
+<!-- 图片上传 resource/index.wxml -->
+<view class="resource-wrap">
+    <view class="header-tab">
+        <view>
+            <view>
+                共<text>{{ totalCount }}</text>条
+                <view class="in-block" wx:if="{{ showAllData }}">
+                    ，已上传<text>{{ uploadCount }}</text>条，未上传<text>{{ unUploadCount }}</text>条
+                </view>
+            </view>
+            <view>
+                总重量<text>{{ totalWeight }}</text>吨
+            </view>
+        </view>
+        <view class="right" bindtap="showSideBar">
+            筛选<image src="{{ iconDomain }}icon-filter.png" lazy-load />
+        </view>
+    </view>
+    <scroll-view class="scroll-view" style="height: {{ scrollH }};" scroll-y enable-back-to-top bindscrolltolower="loadPage">
+        <view class="content" wx:for="{{ dataList }}" wx:key="item" data-item="{{ item }}" bindtap="goDetail">
+            <view class="center">
+                <view class="fb">{{ item.packCode }}</view>
+                <view>
+                    <text wx:if="{{ item.productName }}">{{ item.productName }} /</text>
+                    <text wx:if="{{ item.shopSign }}"> {{ item.shopSign }} /</text>
+                    <text wx:if="{{ item.producingName }}"> {{ item.producingName }} /</text>
+                    <text wx:if="{{ item.spec }}"> {{ item.spec }}</text>
+                </view>
+                <view>
+                    <text class="min-width" wx:if="{{ item.storagePlaceName }}">存放地：{{ item.storagePlaceName }}</text>
+                    <text>{{ item.weight }}吨</text>
+                </view>
+            </view>
+            <view class="right">
+                <view class="status {{ item.hasImg? 'green' : '' }}">{{ item.hasImg? '已上传' : '未上传' }}</view>
+                <view class="op-right-arrow pr20"></view>
+            </view>
+            <hr wx:if="{{ index != dataList.length - 1 }}"/>
+        </view>
+        <loadmore noMore="{{ noMore }}"></loadmore>
+    </scroll-view>
+    <side-bar showSideBar="{{ showSideBar }}" showInput="{{ showInput }}" inputTitle="{{ inputTitle }}" showImage="{{ showImage }}" bindconfirm="confirmSideBar"></side-bar>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

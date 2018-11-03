@@ -1,0 +1,6 @@
+<view class="approval-success-wrap">
+    <image  src="{{iconDomain}}icon-success.png" lazy-load/>
+    <text class="msg">审批成功</text>
+    <view class="btn-blue" bindtap="returnOn">继续审批</view>
+    <text class="back" bindtap="returnHome">返回首页</text>
+</view>

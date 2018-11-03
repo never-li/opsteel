@@ -1,0 +1,17 @@
+<view class="change-mobile-wrap bg-white">
+    <view class="title">
+        <view class="f36 color-666">验证手机</view>
+        <view class="f26 color-999 mt20">
+            短信验证码已发送至 +86{{ mobile }} 请注意查收
+        </view>
+    </view>
+    <view class="op-flex-box change-mobile-input mb80" >
+        <view class="center lh90">
+             <input type="number" class="f38 tc" maxlength="4" value="{{ smsValue }}" bindinput="smsInput" focus />
+        </view>
+    </view>
+    <view class="btn-blue {{ smsSucc? '' : 'btn-disable' }}" bindtap="nextStep">下一步</view>
+    <view class="f26 color-999 tc pt60" wx:if="{{ timeout > 0 }}">重发验证码{{ timeout }}秒</view>
+    <view class="f32 color-blue tc pt60" wx:if="{{ timeout <= 0 }}" bindtap="sendSms">重新发送验证码</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

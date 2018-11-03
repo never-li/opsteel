@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "资源详情",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}

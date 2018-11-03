@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "钢贸商城",
+    "usingComponents": {
+        "side-bar": "/components/searchSideBar/searchSideBar",
+        "loadmore": "/components/loadmore/loadmore",
+        "toast": "/components/toast/toast"
+    }
+}

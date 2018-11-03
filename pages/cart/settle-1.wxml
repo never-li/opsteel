@@ -1,0 +1,218 @@
+<view class="settle-wrap">
+    <view class="lock-wrap">
+        <view class="tip">
+            订单生成后，请在付款截止时间内完成付款，逾期未付款会撤销订单和产生违约行为，累计违约3次会冻结帐号。
+        </view>
+        <view class="header">
+            <image src="{{ iconDomain }}icon-order.png" lazy-load />
+            请填写并核对订单信息
+        </view>
+        <!-- 付款信息 -->
+        <view class="content">
+            <view class="f30 fb lh60">付款信息</view>
+            <view class="op-flex-box f26 mb20">
+                <view>付款比例</view>
+                <view class="btn-type">
+                    <view wx:if="{{ type != 1 }}">
+                        全额预付
+                    </view>
+                    <view wx:if="{{ type == 1 }}">
+                        <!-- paymentMethod 10-全额预付 20-定金 30-赊销 -->
+                        {{ orderVo.paymentMethod == 20? '定金' : orderVo.paymentMethod == 30? '赊销' : '全额预付' }}
+                        <text wx:if="{{ orderVo.paymentMethod == 20 }}">({{ orderVo.paymentRate }}%)</text>
+                    </view>
+                </view>
+            </view>
+            <view class="op-flex-box f26" wx:if="{{ type != 0 }}">
+                <view>付款方式</view>
+                <view class="btn-type" wx:if="{{ type == 1 }}">
+                    <view>{{ orderVo.paymentType == 10? '现金' : '银票' }}</view>
+                </view>
+                <view class="btn-type" wx:if="{{ type == 2 }}">
+                    <view>现金</view>
+                </view>
+            </view>
+        </view>
+        <!-- 订单详情 -->
+        <view class="content mt20">
+            <view class="f30 fb lh60">订单详情</view>
+            <view class="lh52">
+                <image class="icon-v" src="{{ iconDomain }}icon-v.png" lazy-load />
+                <text wx:if="{{ type == 0 }}">{{ cartVo.showSupplierFlag == 0? '已认证供应商' : cartVo.cartVoList[0].providerName }}</text>
+                <text wx:if="{{ type == 1 }}">{{ orderVo.providerName }}</text>
+                <text wx:if="{{ type == 2 }}">{{ goodsVo.providerName }}</text>
+                <image class="tag xianhuo" src="{{ iconDomain }}tag-xianhuo.png" lazy-load wx:if="{{ type == 0 }}" />
+                <image class="tag" src="{{ iconDomain }}tag-dingdan.png" lazy-load wx:if="{{ type == 1 }}" />
+                <image class="tag" src="{{ iconDomain }}tag-daohuo.png" lazy-load wx:if="{{ type == 2 }}" />
+            </view>
+            <!-- 现货 -->
+            <block wx:if="{{ type == 0 }}">
+                <view class="box" wx:for="{{ cartVo.cartVoList }}" wx:key="item">
+                    <view class="inner">
+                        <view>
+                            <text>捆包号</text>
+                            <text>{{ item.packCode || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>品种</text>
+                            <text>{{ item.productName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>牌号</text>
+                            <text>{{ item.shopSign || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>产地</text>
+                            <text>{{ item.producingName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>规格</text>
+                            <text>{{ item.spec || '-' }}</text>
+                        </view>
+                    </view>
+                    <view class="inner">
+                        <view>
+                            <text>存放地</text>
+                            <text>{{ item.storagePlaceName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>件数</text>
+                            <text>{{ item.pieces }}件</text>
+                        </view>
+                        <view>
+                            <text>重量</text>
+                            <text>{{ item.weight }}吨</text>
+                        </view>
+                        <view>
+                            <text>单价</text>
+                            <text>￥{{ item.price }}</text>
+                        </view>
+                        <view>
+                            <text>金额</text>
+                            <text class="color-red fb">￥{{ item.totalAmount }}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <!-- 定制订单 -->
+            <block wx:if="{{ type == 1 }}">
+                <view class="box">
+                    <view class="inner">
+                        <view>
+                            <text>订单号</text>
+                            <text>{{ orderVo.frameOrderCode }}</text>
+                        </view>
+                        <view>
+                            <text>合同月</text>
+                            <text>{{ orderVo.frameOrderMonth || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>品种</text>
+                            <text>{{ orderVo.productTypeName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>交货地</text>
+                            <text>{{ orderVo.storagePlaceName || '-' }}</text>
+                        </view>
+                    </view>
+                    <view class="inner">
+                        <view>
+                            <text>重量</text>
+                            <text>{{ orderVo.orderWeight }}吨</text>
+                        </view>
+                        <view>
+                            <text>单价</text>
+                            <text>￥{{ orderVo.frameOrderPrice }}</text>
+                        </view>
+                        <view>
+                            <text>代运补贴</text>
+                            <text>￥{{ orderVo.freightSubsidyAmount }}</text>
+                        </view>
+                        <view>
+                            <text>货款金额</text>
+                            <text class="color-red fb">￥{{ orderVo.goodsAmount }}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <!-- 到货 -->
+            <block wx:if="{{ type == 2 }}">
+                <view class="box" wx:for="{{ goodsVo.cartGoodsVoList }}" wx:key="item">
+                    <view class="inner">
+                        <view>
+                            <text>订单号</text>
+                            <text>{{ item.frameOrderCode }}</text>
+                        </view>
+                        <view>
+                            <text>品种</text>
+                            <text>{{ item.productName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>牌号</text>
+                            <text>{{ item.shopSign || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>规格</text>
+                            <text>{{ item.spec || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>产地</text>
+                            <text>{{ item.producingName || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>存放地</text>
+                            <text>{{ item.storagePlaceName || '-' }}</text>
+                        </view>
+                    </view>
+                    <view class="inner">
+                        <view>
+                            <text>捆包号</text>
+                            <text>{{ item.packCode || '-' }}</text>
+                        </view>
+                        <view>
+                            <text>件数</text>
+                            <text>{{ item.pieces }}件</text>
+                        </view>
+                        <view>
+                            <text>重量</text>
+                            <text>{{ item.weight }}吨</text>
+                        </view>
+                        <view>
+                            <text>利息</text>
+                            <text>￥{{ item.interest }}</text>
+                        </view>
+                        <view>
+                            <text>单价</text>
+                            <text>￥{{ item.price }}</text>
+                        </view>
+                        <view>
+                            <text>货款金额</text>
+                            <text class="color-red fb">￥{{ item.totalAmount }}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <!-- 其他信息 -->
+        <view class="content others">
+            <view class="f30 fb lh52">其他信息</view>
+            <view class="f26 op-flex-box lh52">
+                <view class="color-999">开票服务：</view>
+                <view class="center">本订单由 
+                    <view class="color-orange" wx:if="{{ type == 0 }}">
+                        <picker class="pl20pr20" mode="selector" range="{{ cartVo.selfRunBankAccoutEntities }}" range-key="name" bindchange="invoiceCompanyNameChange" wx:if="{{ cartVo.cartVoList[0].businessType == 30 && cartVo.isIncludeProxyResource == 0 }}">
+                            {{ invoiceCompanyName }}
+                            <i class="op-triangle"></i>
+                        </picker>
+                        <text wx:else>{{ invoiceCompanyName }}</text>
+                    </view>
+                    <text class="color-orange" wx:if="{{ type == 1 }}">{{ orderVo.providerName }}</text>
+                    <text class="color-orange" wx:if="{{ type == 2 }}">{{ goodsVo.providerName }}</text>
+                    提供发票及相关服务
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-bottom" bindtap="nextStep">{{ settleType == 10? '生成订单' : settleType == 40? '下一步' : '去支付'}}</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

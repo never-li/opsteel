@@ -1,0 +1,18 @@
+<view class="forget-password-wrap bg-white">
+    <view class="title">
+        <view class="f36 color-666">设置密码</view>
+        <view class="f26 color-999 mt20">
+            密码为6-16位英文字符和数字
+        </view>
+    </view>
+    <view class="forget-password-input mb80" >
+        <view class="lh90 mb20">
+             <input type="password" class="f34" placeholder="请输入密码" placeholder-style="color: #999;" maxlength="16" value="{{ codeValue }}" bindinput="codeInput" bindconfirm="nextStep" focus />
+        </view>
+        <view class="lh90">
+             <input type="password" class="f34" placeholder="请再次确认密码" placeholder-style="color: #999;" maxlength="16" value="{{ recodeValue }}" bindinput="recodeInput" bindconfirm="nextStep" />
+        </view>
+    </view>
+    <view class="btn-blue {{ (codeSucc && recodeSucc)? '' : 'btn-disable' }}" bindtap="nextStep">完成</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

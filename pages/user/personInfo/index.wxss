@@ -1,0 +1,19 @@
+@import '/static/css/common.wxss';
+.personinfo-wrap {
+  height: 100%;
+}
+.personinfo-wrap .content > .op-flex-box {
+  position: relative;
+  box-sizing: border-box;
+}
+.personinfo-wrap .content > .op-flex-box image {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: baseline;
+}
+.personinfo-wrap .popup-content input {
+  font-size: 32rpx !important;
+  line-height: 100rpx;
+  color: #333333 !important;
+  height: 100rpx;
+}

@@ -1,0 +1,18 @@
+@import '/static/css/common.wxss';
+.forget-password-wrap {
+  height: 100%;
+  padding-top: 140rpx;
+  box-sizing: border-box;
+}
+.forget-password-wrap .forget-password-icon {
+  text-align: center;
+}
+.forget-password-wrap .forget-password-icon image {
+  width: 130rpx;
+  height: 110rpx;
+  margin-bottom: 53rpx;
+}
+.forget-password-wrap .forget-password-icon .forget-password-msg {
+  line-height: 50rpx;
+  margin-bottom: 115rpx;
+}

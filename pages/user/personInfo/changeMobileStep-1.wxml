@@ -1,0 +1,18 @@
+<view class="change-mobile-wrap bg-white">
+    <view class="title">
+        <view class="f26 color-999 mt20">
+            你的帐号目前绑定的手机号是 +86{{ mobile }}，请输入你希望绑定的新手机号。
+        </view>
+    </view>
+    <view class="change-mobile-input mb80" >
+        <view class="op-flex-box">
+            <view class="left tc f30">
+                <text class="pr10">+</text>
+                <text>86</text>
+            </view>
+            <input type="number" class="center f34 pl20" placeholder="请输入新手机号" placeholder-style="color: #999;" maxlength="11" value="{{ mobileValue }}" bindinput='mobileInput' focus />
+        </view>
+    </view>
+    <view class="btn-blue {{ mobileSucc? '' : 'btn-disable' }}" bindtap="nextStep">下一步</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

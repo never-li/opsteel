@@ -1,0 +1,51 @@
+@import '/static/css/common.wxss';
+.record-wrap .wrap-item {
+  margin-left: 24rpx;
+}
+.record-wrap .wrap-item .title {
+  line-height: 37rpx;
+  padding-top: 35rpx;
+  margin-bottom: 21rpx;
+}
+.record-wrap .wrap-item .title .name {
+  font-size: 26rpx;
+  color: #666666;
+  margin-right: 14rpx;
+}
+.record-wrap .wrap-item .title .num {
+  font-size: 36rpx;
+  color: #333333;
+  margin-right: 19rpx;
+}
+.record-wrap .wrap-item .title .icon {
+  width: 62rpx;
+  height: 32rpx;
+}
+.record-wrap .wrap-item .title .time {
+  font-size: 26rpx;
+  color: #999999;
+  text-align: right;
+  padding-right: 24rpx;
+}
+.record-wrap .wrap-item .content {
+  padding-bottom: 12rpx;
+}
+.record-wrap .wrap-item .content .item {
+  width: 50%;
+  display: inline-block;
+}
+.record-wrap .wrap-item .content .item text {
+  line-height: 33rpx;
+  margin-bottom: 13rpx;
+}
+.record-wrap .wrap-item .content .item .name {
+  width: 90rpx;
+  font-size: 24rpx;
+  color: #999999;
+  display: inline-block;
+}
+.record-wrap .wrap-item .content .item .value {
+  font-size: 24rpx;
+  color: #333333;
+  display: inline-block;
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "记录查询",
+    "usingComponents": {
+        "loadmore": "../../../../components/loadmore/loadmore"
+    }
+}

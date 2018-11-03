@@ -1,0 +1,99 @@
+<view class="settle-wrap">
+    <view class="lock-wrap">
+        <view class="tip">
+            <view>{{ type == 2? '赎单' : '采购订单' }}已生成，订单号：{{ frameOrderCode }}</view>
+            <view>付款截止时间：{{ payEndDatetime }}</view>
+            <view wx:if="{{ settleType == 40 }}">采购运单已生成，运单号：{{ freightCode }}</view>
+            <view wx:if="{{ settleType == 40 }}">付款截止时间：{{ payEndDatetime }}</view>
+        </view>
+        <view class="header">
+            <image src="{{ iconDomain }}icon-pay.png" lazy-load />
+            请填写并核对付款信息
+        </view>
+        <view class="content account">
+            <view class="f30 fb lh60">付款对象</view>
+            <view class="op-flex-box lh52">
+                <view>账户名称：</view>
+                <view class="center">{{ payInfo.providerName }}</view>
+            </view>
+            <view class="op-flex-box lh52">
+                <view>收款银行：</view>
+                <!-- buyerCompanySourceType 0是自营，1是其他 -->
+                <view class="center" wx:if="{{ payInfo.buyerCompanySourceType == 0 }}">
+                    <picker mode="selector" range="{{ bankInfoList }}" range-key="bankFullName" bindchange="bankChange">
+                        {{ bankFullName? bankFullName : '请选择收款银行' }}
+                        <i class="op-triangle"></i>
+                    </picker>
+                </view>
+                <view class="center" wx:else>{{ info.bankName }}</view>
+            </view>
+            <view class="op-flex-box lh52">
+                <view>收款帐号：</view>
+                <view class="center" wx:if="{{ payInfo.buyerCompanySourceType == 0 }}">
+                    <picker mode="selector" range="{{ bankInfoList }}" range-key="bankAccount" bindchange="bankChange" wx:if="{{ bankInfoList.length > 0 }}">
+                        {{ bankAccount? bankAccount : '请选择收款帐号' }}
+                        <i class="op-triangle"></i>
+                    </picker>
+                    <view class="center" wx:else>
+                        无收款帐号，请联系客服：0757-28908888
+                    </view>
+                </view>
+                <view class="center" wx:else>{{ info.bankAccount }}</view>
+            </view>
+        </view>
+        <view class="content op-flex-box mt20">
+            <view class="lh52">
+                <view>余额支付</view>
+                <view class="f24 color-666" wx:if="{{ payInfo.buyerCompanySourceType != 0 }}">可用余额：{{ info.activeAmount }}元</view>
+            </view>
+            <image src="{{ iconDomain }}round-select.png" lazy-load wx:if="{{ banlanceChecked }}" />
+            <image src="{{ iconDomain }}round-default.png" lazy-load wx:else />
+        </view>
+        <!-- 暂时不做 -->
+        <view class="content-baitiao mt20" wx:if="{{ false }}">
+            <view class="op-flex-box p-rl p20" bindtap="baitiaoPay">
+                <view class="lh52">
+                    <view>
+                        欧浦白条支付
+                        <text class="f24 color-blue">
+                            <image class="icon-rule" src="{{ iconDomain }}icon-rule.png" lazy-load />交易规则
+                        </text>
+                    </view>
+                    <view class="f24 color-666">可用额度：{{ info.surplusAmount }}元</view>
+                </view>
+                <image src="{{ iconDomain }}round-select.png" lazy-load wx:if="{{ baitiaoChecked }}" />
+                <image src="{{ iconDomain }}round-default.png" lazy-load wx:else />
+                <hr/>
+            </view>
+            <view class="box-info" wx:if="{{ baitiaoChecked }}">
+                <view class="p-rl p20">
+                    <view class="color-666 f26 lh52">1.输入白条支付金额</view>
+                    <input type="digit" placeholder="可用额度 50000 元" placeholder-style="color: #ccc" bindinput="{{ baitiaoInput }}" />
+                    <hr/>
+                </view>
+                <view>
+                    <view class="color-666 f26 p20">2.选择金融机构</view>
+                    <view class="op-flex-box" wx:for="{{ baitiaoList }}" wx:key="item" data-item="{{ item }}" bindtap="baitiaoChange">
+                        <image src="{{ iconDomain }}round-select.png" lazy-load wx:if="{{ item.checked }}" />
+                        <image src="{{ iconDomain }}round-default.png" lazy-load wx:else />
+                        <view class="left-box">
+                            <view class="f40 color-red">{{ item.interestDes }}%</view>
+                            <view class="f20 color-999">前7天利息</view>
+                            <hr class="hr-right"/>
+                        </view>
+                        <view class="center">
+                            <view class="f32 mb10">{{ item.lendingCompanyName }}</view>
+                            <view class="remark">
+                                <text>利息政策</text>
+                                <text>优惠</text>
+                            </view>
+                        </view>
+                        <hr/>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-bottom {{ canPay? '' : 'disable'}}" bindtap="nextStep">下一步</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

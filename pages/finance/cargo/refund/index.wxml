@@ -1,0 +1,63 @@
+<scroll-view scroll-y style="height: {{scrollH}};" >
+    <view class="refund-wrap bg-white">
+        <!-- 未还合计 -->
+        <view class='no-refund-total'>
+            <text class="title">当前未还合计(元)</text>
+            <view class="op-flex-box">
+                <view class="total center">20,200.00</view>
+                <view class='detail' bindtap="returnRecord" data-id="0" data-title="未还贷款">未还贷款明细</view>
+                <view class="op-right-arrow"></view>
+            </view>
+            <view class="border-bottom"></view>
+            <view class="item">
+                <view class="op-flex-box pb20 mt20 border-bottom">
+                    <text class="color-999">本金</text>
+                    <text class="color-333">20,000.00</text>
+                </view>
+                <view class="op-flex-box pb20 mt20 border-bottom">
+                    <text class="color-999">利息</text>
+                    <text class="color-333">20,000.00</text>
+                </view>
+                <view class="op-flex-box pb20 mt20">
+                    <text class="color-999">仓管费</text>
+                    <image  src="{{iconDomain}}help.png" />
+                    <text class="color-333 center">20,000.00</text>
+                </view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <!-- 质押 -->
+        <view class="op-flex-box pledge border-bottom">
+            <view class="total center">质押货物：共<b>4</b>件，<b>8.980</b>吨</view>
+            <view class="record" bindtap="returnRecord" data-id="1" data-title="还款记录">还款记录</view>
+            <view class="op-right-arrow"></view>
+        </view>
+        <!-- 选择 -->
+        <view class="select">
+            <view class="title op-flex-box border-bottom">
+                <text class="center">选择需解押货物</text>
+                <view>共<b>4</b>条，总重量<b>8.980</b>吨</view>
+            </view>
+            <select selectData ="{{selectData}}" bindSelect="selectComponents"></select>
+        </view>
+        <view class="line"></view>
+        <!-- 还贷 -->
+        <view class="pay-back">
+            <view class="op-flex-box">
+                <text class="center">还贷本金(元)</text>
+                <input class="money input-money" value="1000"/>
+            </view>
+            <view class="op-flex-box">
+                <text>应付利息(元)</text>
+                <text class="money">500.00</text>
+            </view>
+            <view class="op-flex-box">
+                <text>还贷合计</text>
+                <text class="money color-red">10,500.00</text>
+            </view>
+        </view>
+        <view class="line"></view>
+        
+    </view>
+</scroll-view>
+<view class="btn-bottom" bindtap="payback">去还款</view>

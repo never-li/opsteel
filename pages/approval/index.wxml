@@ -1,0 +1,34 @@
+<view class="approval-wrap">
+    <view class="op-flex-box" bindtap='superApply'>
+        <image class="icon-image" src="{{ iconDomain }}shenpi-1.png" lazy-load />
+        <view class="op-flex-box center lh90 border-bottom">
+            <text class="title center">超发申请</text>
+            <text class="number">100</text>
+            <span class="op-right-arrow"></span>
+        </view>
+    </view>
+    <view class="op-flex-box" bindtap='lackApply'>
+        <image class="icon-image" src="{{ iconDomain }}shenpi-2.png" lazy-load />
+        <view class="op-flex-box center lh90 border-bottom">
+            <text class="title center">欠发申请</text>
+            <text class="number">10</text>
+            <span class="op-right-arrow"></span>
+        </view>
+    </view>
+    <view class="op-flex-box" bindtap='purchase'>
+        <image class="icon-image" src="{{ iconDomain }}shenpi-3.png" lazy-load />
+        <view class="op-flex-box center lh90 border-bottom">
+            <text class="title center">采购合同审批</text>
+            <span class="number">1</span>
+            <span class="op-right-arrow"></span>
+        </view>
+    </view>
+    <view class="op-flex-box" bindtap='drop'>
+        <image class="icon-image" src="{{ iconDomain }}shenpi-4.png" lazy-load />
+        <view class="op-flex-box center lh90 border-bottom">
+            <text class="title center">降价审批</text>
+            <span class="number">1</span>
+            <span class="op-right-arrow"></span>
+        </view>
+    </view>
+</view>

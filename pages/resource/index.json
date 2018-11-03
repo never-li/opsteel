@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "图片上传",
+    "usingComponents": {
+        "side-bar": "/components/searchSideBar/searchSideBar",
+        "loadmore": "/components/loadmore/loadmore",
+        "toast": "/components/toast/toast"
+    }
+}

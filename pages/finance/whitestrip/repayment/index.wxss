@@ -1,0 +1,139 @@
+@import '/static/css/common.wxss';
+.repayment-warp .line {
+  background: #F5F5F5;
+  width: 750rpx;
+  height: 20rpx;
+}
+.repayment-warp .bg {
+  background: #FFFFFF;
+  padding: 0 24rpx;
+}
+.repayment-warp .amount text {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333333;
+}
+.repayment-warp .amount input {
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: right;
+  padding: 13rpx 0;
+  font-size: 32rpx;
+  color: #333333;
+}
+.repayment-warp .over .over-text {
+  padding: 34rpx 0;
+}
+.repayment-warp .over .over-text text {
+  display: block;
+}
+.repayment-warp .over .over-text .p1 {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333333;
+  margin-bottom: 5rpx;
+}
+.repayment-warp .over .over-text .p2 {
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #666666;
+}
+.repayment-warp .over .over-icon image {
+  width: 38rpx;
+  height: 38rpx;
+}
+.flick-code {
+  width: 750rpx;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.flick-code .bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.flick-code .flick-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 690rpx;
+  height: 290rpx;
+  margin: 110rpx 30rpx 0;
+  background: #FFFFFF;
+  border-radius: 15rpx;
+}
+.flick-code .flick-box .back {
+  position: absolute;
+  top: 21rpx;
+  left: 23rpx;
+  width: 42rpx;
+  height: 42rpx;
+  padding: 10rpx;
+}
+.flick-code .flick-box .back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 31rpx;
+  width: 2rpx;
+  height: 42rpx;
+  transform: rotate(-45deg);
+  background: #999999;
+}
+.flick-code .flick-box .back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 31rpx;
+  width: 2rpx;
+  height: 42rpx;
+  transform: rotate(45deg);
+  background: #999999;
+}
+.flick-code .flick-box .title {
+  margin-top: 30rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #030303;
+  line-height: 48rpx;
+  letter-spacing: -0.09rpx;
+  padding-bottom: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+.flick-code .flick-box .box {
+  position: relative;
+}
+.flick-code .flick-box .box .box-bg {
+  text-align: center;
+}
+.flick-code .flick-box .box .box-bg > view {
+  width: 100rpx;
+  height: 100rpx;
+  border: 2rpx solid #cccccc;
+  display: inline-block;
+  border-right: none;
+}
+.flick-code .flick-box .box .box-bg > view:last-child {
+  border-right: 2rpx solid #cccccc;
+}
+.flick-code .flick-box .box .box-code {
+  position: absolute;
+  top: 5rpx;
+  left: 50%;
+  margin-left: -150rpx;
+  width: 300rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 50rpx;
+  border-bottom: 1rpx solid #E8E8E8;
+  text-align: center;
+}
+.flick-code .flick-box .box .aa {
+  letter-spacing: 100rpx;
+}

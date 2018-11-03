@@ -1,0 +1,194 @@
+@import '/static/css/common.wxss';
+.refund-wrap .no-refund-total {
+  display: inline-block;
+  padding-left: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.refund-wrap .no-refund-total .title {
+  display: block;
+  margin-top: 34rpx;
+  font-size: 26rpx;
+  color: #666666;
+  height: 37rpx;
+}
+.refund-wrap .no-refund-total .total {
+  margin-top: 8rpx;
+  font-size: 64rpx;
+  color: #333333;
+  height: 90rpx;
+  margin-bottom: 21rpx;
+}
+.refund-wrap .no-refund-total .detail {
+  font-size: 26rpx;
+  color: #008CFF;
+  margin-right: 16rpx;
+  line-height: 37rpx;
+}
+.refund-wrap .no-refund-total .op-right-arrow {
+  margin-right: 24rpx;
+}
+.refund-wrap .no-refund-total .item text {
+  font-size: 26rpx;
+  line-height: 37rpx;
+}
+.refund-wrap .no-refund-total .item text.color-333 {
+  margin-right: 24rpx;
+}
+.refund-wrap .no-refund-total .item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+.refund-wrap .no-refund-total .item .center {
+  text-align: right;
+}
+.refund-wrap .pledge {
+  padding: 22rpx 24rpx;
+  line-height: 37rpx;
+}
+.refund-wrap .pledge .total {
+  font-size: 26rpx;
+  color: #333333;
+}
+.refund-wrap .pledge .total b {
+  color: #F95355;
+}
+.refund-wrap .pledge .record {
+  font-size: 26rpx;
+  color: #008CFF;
+  margin-right: 16rpx;
+}
+.refund-wrap .select .title {
+  padding: 0 24rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  padding-bottom: 23rpx;
+}
+.refund-wrap .select .title text {
+  color: #333333;
+  line-height: 37rpx;
+}
+.refund-wrap .select .title > view b {
+  color: #F95355;
+}
+.refund-wrap .select .detail .item .bale-title {
+  margin-top: 24rpx;
+  position: relative;
+}
+.refund-wrap .select .detail .item .bale-title .bale-num {
+  font-size: 24rpx;
+  color: #999999;
+  padding-bottom: 23rpx;
+  margin-bottom: 18rpx;
+  margin-left: 76rpx;
+}
+.refund-wrap .select .detail .item .bale-title .bale-num b {
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 14rpx;
+}
+.refund-wrap .select .detail .item .bale-detail {
+  font-size: 0rpx;
+  margin-left: 76rpx;
+  padding-bottom: 23rpx;
+  margin-bottom: 21rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.refund-wrap .select .detail .item .bale-detail .norm {
+  display: inline-block;
+  width: 50%;
+  padding-bottom: 13rpx;
+  font-size: 24rpx;
+}
+.refund-wrap .select .detail .item .bale-detail .norm text {
+  line-height: 33rpx;
+  color: #999999;
+}
+.refund-wrap .select .detail .item .bale-detail .norm .content {
+  width: 200rpx;
+  line-height: 33rpx;
+  display: inline-block;
+  vertical-align: text-top;
+  margin-left: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.refund-wrap .select .detail .item .bale-detail .norm .sum {
+  display: inline-block;
+  vertical-align: text-top;
+  font-size: 30rpx;
+  line-height: 33rpx;
+  color: #F95355;
+  margin-left: 20rpx;
+}
+.refund-wrap .select .detail .item .bale-detail .norm .sum b {
+  font-size: 24rpx;
+}
+.refund-wrap .select .detail .item:last-child .bale-detail {
+  border-bottom: none;
+  margin-bottom: 0rpx;
+}
+.refund-wrap .select .select-all {
+  position: relative;
+  padding-left: 76rpx;
+  padding-top: 24rpx;
+  padding-bottom: 23rpx;
+}
+.refund-wrap .select .select-all .checkbox {
+  top: 20rpx;
+}
+.refund-wrap .select .select-all .chosen {
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 33rpx;
+}
+.refund-wrap .select .select-all .chosen b {
+  color: #F95355;
+}
+.refund-wrap .select .select-all .collapse {
+  margin-right: 24rpx;
+  color: #008CFF;
+  line-height: 33rpx;
+}
+.refund-wrap .select .select-all .op-down-arrow {
+  vertical-align: bottom;
+}
+.refund-wrap .pay-back > view {
+  margin-left: 24rpx;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  padding: 20rpx 0 21rpx 0;
+  color: #999999;
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.refund-wrap .pay-back .input-money {
+  border: 2rpx solid #E8E8E8;
+  width: 200rpx;
+  height: 60rpx;
+  text-align: right;
+  border-radius: 4rpx;
+  padding-right: 10rpx;
+}
+.refund-wrap .pay-back .money {
+  font-size: 26rpx;
+  margin-right: 20rpx;
+}
+.line {
+  width: 100%;
+  height: 20rpx;
+  background: #E8E8E8;
+}
+.op-right-arrow {
+  margin-top: -12rpx;
+}
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 24rpx;
+  width: 38rpx;
+  height: 38rpx;
+}

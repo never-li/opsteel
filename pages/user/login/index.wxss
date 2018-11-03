@@ -1,0 +1,32 @@
+@import '/static/css/common.wxss';
+.login-wrap {
+  height: 100%;
+  padding: 180rpx 60rpx 0;
+  box-sizing: border-box;
+}
+.login-wrap .logo image {
+  width: 310rpx;
+  height: 60rpx;
+}
+.login-wrap .title {
+  font-size: 54rpx;
+  margin-top: 30rpx;
+}
+.login-wrap .login-info {
+  padding: 100rpx 0 160rpx;
+}
+.login-wrap .login-info .icon-clear {
+  text-align: center;
+  width: 80rpx;
+}
+.login-wrap .login-info .icon-clear image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.login-wrap .login-info input {
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.login-wrap navigator {
+  padding: 20rpx 0;
+}

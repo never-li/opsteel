@@ -1,0 +1,20 @@
+<view class="change-password-wrap bg-white">
+    <view class="title">
+        <view class="f26 color-999 mt20">
+            密码为6-16位英文字符和数字
+        </view>
+    </view>
+    <view class="change-password-input mb80" >
+        <view>
+            <input type="password" class="center f34" placeholder="请输入原密码" placeholder-style="color: #999;" maxlength="16" value="{{ oldPwd }}" bindinput='oldPwdInput' focus />
+        </view>
+        <view>
+            <input type="password" class="center f34" placeholder="请输入新密码" placeholder-style="color: #999;" maxlength="16" value="{{ newPwd }}" bindinput='newPwdInput' />
+        </view>
+        <view>
+            <input type="password" class="center f34" placeholder="请再次确认密码" placeholder-style="color: #999;" maxlength="16" value="{{ renewPwd }}" bindinput='renewPwdInput' />
+        </view>
+    </view>
+    <view class="btn-blue {{ (oldPwdSucc && newPwdSucc && renewPwdSucc)? '' : 'btn-disable' }}" bindtap="submit">提交</view>
+    <toast isShowToast="{{ isShowToast }}" title="{{ title }}" icon="{{ icon }}"></toast>
+</view>

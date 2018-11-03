@@ -1,0 +1,11 @@
+<view class="settle-wrap bg-white">
+    <view class="settle-icon">
+         <image class="icon-center" src="{{ succIcon }}"></image>
+         <view class="settle-msg f36 color-666">
+             <view wx:if="{{ isAudit == 1 }}">付款已申请，待审核</view>
+             <view wx:if="{{ isAudit == 1 }}">请登录欧浦智网查看详情</view>
+             <view wx:if="{{ isAudit == 0 }}">恭喜您！支付成功</view>
+        </view>
+    </view>
+    <view class="btn-blue" bindtap="backCart">返回购物车</view>
+</view>

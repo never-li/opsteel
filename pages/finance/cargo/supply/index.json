@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "我要䃼货",
+    "usingComponents": {
+        "select": "../../../../components/select/select"
+    }
+}

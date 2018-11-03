@@ -1,0 +1,5 @@
+<view class="approval-success-wrap">
+    <image  src="{{iconDomain}}icon-success.png" lazy-load/>
+    <text class="msg">还款成功</text>
+    <view class="btn-blue" bindtap="returnHome">返回首页</view>
+</view>

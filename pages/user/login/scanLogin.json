@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "扫码登录",
+    "usingComponents": {
+        "toast": "/components/toast/toast"
+    }
+}
